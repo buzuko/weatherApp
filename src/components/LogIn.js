@@ -1,16 +1,18 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios"
+import { Link, useHistory } from "react-router-dom";
+import WeatherPage from "./WeatherPage";
 
 function LogIn() {
+    const history = useHistory();
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [isPending, setIsPending] = useState(true)
 
     const usernameRegex = /^(?=.*[a-z])(?=.*[A-Z])(?!.*\d{4,})(?=^(?:\D*\d){0,3}\D*$)[a-zA-Z\d]*$/;
-    console.log("here 5" + isPending)
     function handleSubmit(e) {
         e.preventDefault();
-        if (!usernameRegex.test(userName)) {
+        if (usernameRegex.test(userName)) {
             fetchData(password, userName)
         } else {
             setIsPending(false)
@@ -18,7 +20,6 @@ function LogIn() {
 
         }
     }
-
     // בדיקה ראשונית האם המשתמש שמור במערכת
     useEffect(() => {
         localStorage.getItem("password") ? fetchData(localStorage.getItem("password"), localStorage.getItem("userName")) : setIsPending(false)
@@ -38,6 +39,8 @@ function LogIn() {
             localStorage.setItem("userName", UserName)
             localStorage.setItem("password", Password)
             setIsPending(false)
+            history.push("/WeatherPage");
+
         } catch (error) {
             setIsPending(false)
             alert("password is incorrect!") // באג: האלרט לא נסגר לפני שפנדיג מתעדכן
