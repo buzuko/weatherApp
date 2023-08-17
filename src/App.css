@@ -1,8 +1,8 @@
-.App {
+.LogIn {
   text-align: center;
 }
 
-.App {
+.LogIn {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -27,4 +27,8 @@
 .LogIn button {
   font-size: 50px;
   border-radius: 8px;
+}
+
+.log {
+  background-color: #0547ca;
 }

@@ -1,0 +1,182 @@
+.WeatherPage {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: rgb(0, 0, 0);
+
+}
+
+.WeatherPage {
+    background-image: url('../cloudIMJ.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 500px;
+    /* Set the height as needed */
+}
+
+/* header component */
+
+.Header {
+    position: absolute;
+    top: -10px;
+    font-size: 20px;
+    align-items: center;
+
+}
+
+
+.header-select {
+    font-size: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 60x;
+    width: 150px;
+}
+
+.header-icon {
+    background-color: transparent;
+    padding: 10px;
+    border: none;
+    font-size: 35px;
+    margin-left: 10px;
+}
+
+/* end of header cmponent */
+
+
+/* body component */
+
+/* .body {
+    background-color: white;
+    opacity: 0.3;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+    padding: 100px;
+    border-radius: 60px;
+    width: 60%;
+    height: 40%;
+} */
+
+.body {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(1px);
+    border-radius: 60px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    width: 70%;
+    height: 60%;
+    position: absolute;
+
+}
+
+.sun_no_background {
+    position: relative;
+    top: 50%;
+    left: 15%;
+    transform: translateY(-50%);
+    width: 20%;
+    /* height: auto */
+}
+
+.todayData {
+    position: absolute;
+    top: 50%;
+    right: 25%;
+    transform: translateY(-50%);
+    width: 20%;
+}
+
+.todayData h5,
+.todayData p {
+    margin: 5px 0;
+    /* Adjust margins to make elements closer vertically */
+}
+
+.todayData h2 {
+    margin: 15px 0;
+}
+
+/* 
+.Days {
+    display: flex;
+    top: 62.5%;
+    height: 25%;
+    position: absolute;
+    flex-wrap: nowrap;
+    gap: 20px;
+    overflow-x: auto;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(1px);
+    border-radius: 60px;
+} */
+
+/* .tomorrowData,
+.twoDaysData,
+.threeDaysData,
+.fourDaysData {
+
+    position: absolute;
+    bottom: calc(7.5% + 25px);
+    bottom: 7.5%;
+    height: 25%;
+    gap: 100px;
+    display: flex;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(1px);
+    border-radius: 60px;
+    align-items: center;
+}
+
+.dayData h5 {
+    margin-right: 10px;
+}
+
+.dayData p {
+    margin-left: auto;
+} */
+.Days {
+    position: absolute;
+    bottom: calc(7.5% + 25px);
+    bottom: 7.5%;
+    height: 25%;
+    display: flex;
+    gap: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* ... other styles ... */
+}
+
+.dayData {
+    /* padding: 5px; */
+    width: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(1px);
+    border-radius: 60px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+}
+
+.icon {
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+}
+
+
+.Days h5,
+.Days p {
+    margin: 20px 0;
+
+}
+
+/* end of body cmponent */

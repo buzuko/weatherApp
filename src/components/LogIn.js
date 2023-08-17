@@ -1,7 +1,8 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import axios from "axios"
 import { Link, useHistory } from "react-router-dom";
-import WeatherPage from "./WeatherPage";
+import { AppContext } from "../addOns/AppProvider";
+//import WeatherPage from "./WeatherPage";
 
 function LogIn() {
     const history = useHistory();
@@ -10,6 +11,8 @@ function LogIn() {
     const [isPending, setIsPending] = useState(true)
 
     const usernameRegex = /^(?=.*[a-z])(?=.*[A-Z])(?!.*\d{4,})(?=^(?:\D*\d){0,3}\D*$)[a-zA-Z\d]*$/;
+    const { data, setData } = useContext(AppContext);
+
     function handleSubmit(e) {
         e.preventDefault();
         if (usernameRegex.test(userName)) {
@@ -22,8 +25,11 @@ function LogIn() {
     }
     // בדיקה ראשונית האם המשתמש שמור במערכת
     useEffect(() => {
-        localStorage.getItem("password") ? fetchData(localStorage.getItem("password"), localStorage.getItem("userName")) : setIsPending(false)
-    }, [])
+        localStorage.getItem("password") ?
+            fetchData(localStorage.getItem("password"), localStorage.getItem("userName"))
+            :
+            setIsPending(false)
+    }, []) // לבדוק אם צריך לנקות
 
     // בדיקה האם המשתמש שהוזן נכון
     const fetchData = async (Password, UserName) => {
@@ -39,12 +45,15 @@ function LogIn() {
             localStorage.setItem("userName", UserName)
             localStorage.setItem("password", Password)
             setIsPending(false)
+            setData(res.data)
             history.push("/WeatherPage");
 
         } catch (error) {
             setIsPending(false)
             alert("password is incorrect!") // באג: האלרט לא נסגר לפני שפנדיג מתעדכן
         }
+
+
     }
 
     return (
