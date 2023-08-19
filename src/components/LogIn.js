@@ -41,7 +41,7 @@ function LogIn() {
                     user_name: UserName
                 }
             })
-            console.log(res)
+            // console.log(res)
             localStorage.setItem("userName", UserName)
             localStorage.setItem("password", Password)
             setIsPending(false)

@@ -3,23 +3,45 @@ import '../Weather.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { AppContext } from "../../addOns/AppProvider";
+import { useAllCities } from "../../addOns/dataHooks";
 
-function Header() {
-    const [selected, setSelected] = useState("")
-    const { data, setData } = useContext(AppContext);
-    console.log(data)
+function Header(info) {
+    const [selected, setSelected] = useState("Jerusalem")
+    const [buttonSelect, setButtonSelect] = useState("Jerusalem")
+    const { data, weatherData, setWeatherData, isPending } = useContext(AppContext);
+
+    const { error, data: data2 } = useAllCities(`cities/${buttonSelect}`, true)
+    console.log(data2)
+    const cityOptions = info.info.map((res, index) => (
+        <option key={index} value={res.city}>
+            {res.city}
+        </option>
+    ));
+
+    function serch() {
+        setButtonSelect(selected)
+        console.log(buttonSelect)
+    }
     return (
         <header className="Header">
             <h1>{"שלום " + data.First_Name + " " + data.Last_Name}</h1>
-            <select className="header-select" value={selected} onChange={(e) => setSelected(e.target.value)}>
-                <option value="Jerusalem">Jerusalem</option>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
-            </select>
-            <button className="header-icon">
-                <FontAwesomeIcon icon={faSearch} />
-            </button>
+            {
+                !isPending ?
+                    <>
+                        <select
+                            className="header-select"
+                            value={selected}
+                            onChange={(e) => setSelected(e.target.value)}
+                        >
+                            {cityOptions}
+                        </select>
+                        <button onClick={serch} className="header-icon">
+                            <FontAwesomeIcon icon={faSearch} />
+                        </button>
+                    </>
+                    :
+                    <h1>...Loading</h1>
+            }
         </header>
     )
 }
