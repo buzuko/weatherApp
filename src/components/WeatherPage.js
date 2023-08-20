@@ -1,33 +1,39 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext } from "react";
 import Header from "./weatherComponents/Header";
 import './Weather.css';
 import Body from "./weatherComponents/body";
 import Days from "./weatherComponents/days";
 import { AppContext } from "../addOns/AppProvider";
-import { useAllCities, useAllCities2 } from "../addOns/dataHooks";
+import { useAllCities } from "../addOns/dataHooks";
 
 function WeatherPage() {
-    const { error, data, isPending2 } = useAllCities("getAllCities", false)
-    const { isPending, weatherData, setWeatherData } = useContext(AppContext);
+    const { data, isPending2 } = useAllCities("getAllCities", false)
+    const { isPending, error } = useContext(AppContext);
 
 
     return (
         <div className="WeatherPage">
-            {data && !isPending2 && !error ? (
+            {!error ?
                 <>
-                    <Header
-                        info={data}
-                    />
-                    {!isPending ?
+                    {data && !isPending2 && !error ? (
                         <>
-                            <Body /> {/* יש שגיעה שזה לא יכול להיות מתחת לדיב */}
-                            <Days />
+                            <Header
+                                info={data}
+                            />
+                            {!isPending ?
+                                <>
+                                    <Body /> {/* יש שגיעה שזה לא יכול להיות מתחת לדיב */}
+                                    <Days />
+                                </>
+                                :
+                                <h1>Loading...</h1>
+                            }
                         </>
-                        :
-                        <h1>Loading...</h1>
-                    }
+                    ) : <h1>Loading...</h1>}
                 </>
-            ) : <h1>Loading...</h1>}
+                :
+                <h1>{error}</h1>
+            }
         </div>
     );
 }

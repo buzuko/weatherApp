@@ -1,42 +1,21 @@
-import React, { useState, useContext } from "react";
+import React, { useEffect, useContext, useRef } from "react";
 import '../Weather.css';
-import sunny from "../../addOns/sunny.png"
-import cloudy from "../../addOns/sunny.png"
-import partly_cloudy from "../../addOns/partly_cloudy.png"
-import rain_s_cloudy from "../../addOns/sunny.png"
-import rainbow from "../../addOns/rainbow.png"
-
-import imglyRemoveBackground from "@imgly/background-removal"
+import { LogoIcon, weatherColor } from "../../addOns/daysTemp";
 import { AppContext } from "../../addOns/AppProvider";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faCloud } from '@fortawesome/free-solid-svg-icons';
-// <FontAwesomeIcon icon={faCloud} />
 
 function Body() {
     const { weatherData, city } = useContext(AppContext);
 
-    const tempEve = weatherData.daily[0].temp.eve - 273.15
-    const tempMax = weatherData.daily[0].temp.max - 273.15
-    const temp = ((tempEve + tempMax) / 2).toFixed(2)
-    let logo = ""
-    if (weatherData.daily[0].temp.day - 273.15 > 29) {
-        logo = sunny
-    } else if (weatherData.daily[0].clouds > 20) {
-        logo = partly_cloudy
-    } else if (weatherData.daily[0].pop > 40) {
-        logo = rain_s_cloudy
-    } else {
-        logo = rainbow
-    }
-    // imglyRemoveBackground(sun_no_background).then((blob) => {
+    const { logo, temp } = LogoIcon(weatherData, 0)
+    const color = weatherColor(weatherData.daily[0])
+    const colorRef = useRef(null);
 
-    //     // The result is a blob encoded as PNG. It can be converted to an URL to be used as HTMLImage.src
-    //     url = URL.createObjectURL(blob);
-    // })
-
+    useEffect(() => {
+        colorRef.current.style.background = color;
+    }, [color]);
 
     return (
-        <body className="body">
+        <div className="body" ref={colorRef}>
             <img src={logo} className="sun_no_background" alt="sun_no_background" />
             <div className="todayData">
                 <h5>היום</h5>
@@ -45,7 +24,7 @@ function Body() {
                 <p>עינון</p>
 
             </div>
-        </body>
+        </div>
     )
 }
 

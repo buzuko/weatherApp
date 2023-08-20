@@ -7,8 +7,10 @@ export function AppProvider({ children }) {
     const [city, setCity] = useState("Jerusalem");
     const [isPending, setIsPending] = useState(true);
     const [weatherData, setWeatherData] = useState(null)
+    const [error, setError] = useState(null)
+
     return (
-        <AppContext.Provider value={{ data, setData, weatherData, setWeatherData, isPending, setIsPending, city, setCity }}>
+        <AppContext.Provider value={{ data, setData, weatherData, setWeatherData, isPending, setIsPending, city, setCity, error, setError }}>
             {children}
         </AppContext.Provider>
     );

@@ -1,6 +1,6 @@
 import { React, useState, useEffect, useContext } from "react";
 import axios from "axios"
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { AppContext } from "../addOns/AppProvider";
 //import WeatherPage from "./WeatherPage";
 
@@ -41,9 +41,9 @@ function LogIn() {
                     user_name: UserName
                 }
             })
-            // console.log(res)
             localStorage.setItem("userName", UserName)
             localStorage.setItem("password", Password)
+            localStorage.setItem("fullName", res.data.First_Name + " " + res.data.Last_Name)
             setIsPending(false)
             setData(res.data)
             history.push("/WeatherPage");

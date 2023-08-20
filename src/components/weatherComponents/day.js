@@ -1,44 +1,27 @@
-import { React, useState, useContext } from "react";
+import { React, useEffect, useContext, useRef } from "react";
 import '../Weather.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCloud } from '@fortawesome/free-solid-svg-icons';
 import { AppContext } from "../../addOns/AppProvider";
-import sunny from "../../addOns/sunny.png"
-import cloudy from "../../addOns/sunny.png"
-import partly_cloudy from "../../addOns/partly_cloudy.png"
-import rain_s_cloudy from "../../addOns/sunny.png"
-import rainbow from "../../addOns/rainbow.png"
-
-
-//<FontAwesomeIcon icon={faCloud} />
+import { LogoIcon, weatherColor } from "../../addOns/daysTemp";
 
 function Day({ time, num }) {
     const { weatherData } = useContext(AppContext);
+    const { logo, temp } = LogoIcon(weatherData, num)
+    const color = weatherColor(weatherData.daily[num])
+    const colorRef = useRef(null);
 
-    const tempEve = weatherData.daily[num].temp.eve - 273.15
-    const tempMax = weatherData.daily[num].temp.max - 273.15
-    const temp = ((tempEve + tempMax) / 2).toFixed(2)
-
-    let logo;
-    if (weatherData.daily[num].temp.day - 273.15 > 29) {
-        logo = sunny
-    } else if (weatherData.daily[num].clouds > 20) {
-        logo = partly_cloudy
-    } else if (weatherData.daily[num].pop > 40) {
-        logo = rain_s_cloudy
-    } else {
-        logo = rainbow
-    }
+    useEffect(() => {
+        colorRef.current.style.background = color;
+    }, [color]);
 
     return (
-        <body className="Day">
+        <div className="Day" ref={colorRef}>
             <div className="dayData">
                 <h5>{time}</h5>
                 <img src={logo} className="dayLogo" alt="dayLogo" />
                 <p>{temp + "\u00B0" + "C"}</p>
 
             </div>
-        </body>
+        </div>
     )
 }
 

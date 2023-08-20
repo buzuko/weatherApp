@@ -1,16 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import '../Weather.css';
-//import sun_no_background from "./sun_no_background.jpg"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Day from "./day";
-import { faCloud } from '@fortawesome/free-solid-svg-icons';
-
-
 
 function Days() {
 
     return (
-        <body className="Days">
+        <div className="Days">
             <Day time={"מחר"}
                 num={1}
             />
@@ -23,7 +18,7 @@ function Days() {
             <Day time={"עוד ארבעה ימים"}
                 num={4}
             />
-        </body>
+        </div>
     )
 }
 

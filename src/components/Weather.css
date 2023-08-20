@@ -1,3 +1,5 @@
+/* weatherPage component */
+
 .WeatherPage {
     min-height: 100vh;
     display: flex;
@@ -23,6 +25,10 @@
     text-align: right;
 }
 
+/* end of weatherPage cmponent */
+
+
+
 /* header component */
 
 .Header {
@@ -37,7 +43,7 @@
 .header-select {
     font-size: 15px;
     padding: 10px;
-    border: 1px solid #ccc;
+    /* border: 10px solid #ccc; */
     border-radius: 60x;
     width: 150px;
 }
@@ -52,8 +58,8 @@
 
 /* end of header cmponent */
 
-/* end of days cmponent */
 
+/* days cmponent */
 
 .Days {
     position: absolute;
@@ -62,6 +68,7 @@
     height: 25%;
     display: flex;
     gap: 30px;
+    z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
