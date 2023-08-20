@@ -38,7 +38,7 @@ export function useAllCities(URL, bool) {
                 setError(error.message);
                 bool ? setIsPending(false) : setIsPending2(false)
             }
-        }, 3000);
+        }, 100);
         return () => {
             clearTimeout(timerId);
         }

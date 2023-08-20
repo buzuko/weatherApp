@@ -21,7 +21,7 @@ function Body() {
                 <h5>היום</h5>
                 <h2>{city}</h2>
                 <p>{"טמפרטורה" + ": " + temp + "\u00B0"}</p>
-                <p>עינון</p>
+                <p>{weatherData.daily[0].weather[0].main}</p>
 
             </div>
         </div>

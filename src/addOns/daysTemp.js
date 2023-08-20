@@ -14,7 +14,7 @@ export function LogoIcon(data, num) {
         logo = sunny
     } else if (data.daily[num].clouds > 20) {
         logo = partly_cloudy
-    } else if (data.daily[num].pop > 40) {
+    } else if (data.daily[num].pop > 0.4) {
         logo = rain_s_cloudy
     } else {
         logo = rainbow
