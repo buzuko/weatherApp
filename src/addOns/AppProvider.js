@@ -4,10 +4,11 @@ export const AppContext = createContext();
 
 export function AppProvider({ children }) {
     const [data, setData] = useState(null);
-    const [isPending, setIsPending] = useState(false);
+    const [city, setCity] = useState("Jerusalem");
+    const [isPending, setIsPending] = useState(true);
     const [weatherData, setWeatherData] = useState(null)
     return (
-        <AppContext.Provider value={{ data, setData, weatherData, setWeatherData, isPending, setIsPending }}>
+        <AppContext.Provider value={{ data, setData, weatherData, setWeatherData, isPending, setIsPending, city, setCity }}>
             {children}
         </AppContext.Provider>
     );

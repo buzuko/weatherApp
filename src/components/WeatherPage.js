@@ -7,23 +7,27 @@ import { AppContext } from "../addOns/AppProvider";
 import { useAllCities, useAllCities2 } from "../addOns/dataHooks";
 
 function WeatherPage() {
-    const { error, data } = useAllCities("getAllCities")
+    const { error, data, isPending2 } = useAllCities("getAllCities", false)
     const { isPending, weatherData, setWeatherData } = useContext(AppContext);
 
-    //const { error: error2, isPending: isPending2, data: data2 } = useAllCities()
-    //console.log(data2)
 
     return (
         <div className="WeatherPage">
-            {data && !isPending && !error ? (
+            {data && !isPending2 && !error ? (
                 <>
                     <Header
                         info={data}
                     />
-                    <Body /> {/* יש שגיעה שזה לא יכול להיות מתחת לדיב */}
-                    <Days />
+                    {!isPending ?
+                        <>
+                            <Body /> {/* יש שגיעה שזה לא יכול להיות מתחת לדיב */}
+                            <Days />
+                        </>
+                        :
+                        <h1>Loading...</h1>
+                    }
                 </>
-            ) : <h1>...Loading</h1>}
+            ) : <h1>Loading...</h1>}
         </div>
     );
 }

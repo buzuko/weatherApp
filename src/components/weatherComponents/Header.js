@@ -1,17 +1,18 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import '../Weather.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { AppContext } from "../../addOns/AppProvider";
 import { useAllCities } from "../../addOns/dataHooks";
+import axios from "axios";
 
 function Header(info) {
     const [selected, setSelected] = useState("Jerusalem")
     const [buttonSelect, setButtonSelect] = useState("Jerusalem")
-    const { data, weatherData, setWeatherData, isPending } = useContext(AppContext);
+    const { data, weatherData, setWeatherData, isPending, setCity } = useContext(AppContext);
 
-    const { error, data: data2 } = useAllCities(`cities/${buttonSelect}`, true)
-    console.log(data2)
+    const { error, data: data2 } = useAllCities(`cities/${buttonSelect}`, true) //  כשזה טוען המסך עדיין מציג את הכל
+
     const cityOptions = info.info.map((res, index) => (
         <option key={index} value={res.city}>
             {res.city}
@@ -20,7 +21,6 @@ function Header(info) {
 
     function serch() {
         setButtonSelect(selected)
-        console.log(buttonSelect)
     }
     return (
         <header className="Header">
@@ -40,7 +40,7 @@ function Header(info) {
                         </button>
                     </>
                     :
-                    <h1>...Loading</h1>
+                    <></>
             }
         </header>
     )

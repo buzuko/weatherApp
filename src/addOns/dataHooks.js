@@ -5,13 +5,15 @@ import { AppContext } from "../addOns/AppProvider";
 //import { useLogin } from "../addOns/dataHooks";
 
 export function useAllCities(URL, bool) {
-    const [isPending, setIsPending] = useState(true)
+    const [isPending2, setIsPending2] = useState(true)
     const [data, setData] = useState(null)
     const [error, setError] = useState(null)
-    const { weatherData, setWeatherData } = useContext(AppContext);
+    const { weatherData, setWeatherData, isPending, setIsPending, setCity } = useContext(AppContext);
+
     useEffect(() => {
+        bool ? setIsPending(true) : setIsPending2(true)
         const timerId = setTimeout(async () => {
-            setIsPending(true);
+
             try {
                 const res = await axios(`http://localhost:3001/${URL}`, {
                     headers: {
@@ -19,20 +21,33 @@ export function useAllCities(URL, bool) {
                         user_name: localStorage.getItem("userName"),
                     }
                 })
-
-                setIsPending(false);
                 setData(res.data);
-                //bool && setWeatherData(res.data)
+                bool && setCity(URL.split("/")[1])
+
+                if (bool) {
+                    async function fetchData() {
+
+                        try {
+                            const res2 = await axios(`https://api.openweathermap.org/data/2.5/onecall?lat=${res.data.latitude}&lon=${res.data.longitude}&appid=6f11fa9760902e1597265ad205f05d2c`);
+                            setWeatherData(res2.data)
+                            bool ? setIsPending(false) : setIsPending2(false)
+                        } catch (error) {
+                            console.log(error);
+                        }
+                    }
+
+                    fetchData();
+                }
             } catch (error) {
                 setError(error.response);
-                setIsPending(false);
+                bool ? setIsPending(false) : setIsPending2(false)
             }
         }, 1000);
         return () => {
             clearTimeout(timerId);
         }
 
-    }, []); // לברר האם צריך לנקות את האפקט
+    }, [URL]); // לברר האם צריך לנקות את האפקט
     return { data, error };
 }
 // export function useAllCities2() {
