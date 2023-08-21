@@ -2,6 +2,8 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios"
 import { AppContext } from "../addOns/AppProvider";
 
+
+// מביא את המידע מהסרבר
 export function useAllCities(URL, bool) {
     const [isPending2, setIsPending2] = useState(true)
     const [data, setData] = useState(null)
@@ -26,7 +28,8 @@ export function useAllCities(URL, bool) {
                         try {
                             const res2 = await axios(`https://api.openweathermap.org/data/2.5/onecall?lat=${res.data.latitude}&lon=${res.data.longitude}&appid=6f11fa9760902e1597265ad205f05d2c`);
                             setWeatherData(res2.data)
-                            bool ? setIsPending(false) : setIsPending2(false)
+                            varifySearched(res2.data)
+                            setIsPending(false)
                         } catch (error) {
                             setError(error.message);
                         }
@@ -45,4 +48,27 @@ export function useAllCities(URL, bool) {
 
     }, [URL]);
     return { data };
+}
+
+// שומר את המקומות האחרונים
+function varifySearched(res) {
+    const storedArrayString = localStorage.getItem('lastSearches');
+    const lastSearches = storedArrayString ? JSON.parse(storedArrayString) : [];
+
+    let i = -1
+    lastSearches.map((element, index) => {
+        if (element.timezone === res.timezone)
+            i = index
+    })
+    i !== -1 && lastSearches.splice(i, 1);
+
+    if (lastSearches.length < process.env.REACT_APP_MAX) {
+        lastSearches.push(res);
+        localStorage.setItem('lastSearches', JSON.stringify(lastSearches));
+    }
+    else {
+        lastSearches.shift();
+        lastSearches.push(res);
+        localStorage.setItem("lastSearches", JSON.stringify(lastSearches))
+    }
 }

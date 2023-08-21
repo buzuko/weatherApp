@@ -25,10 +25,14 @@ function LogIn() {
     }
     // בדיקה ראשונית האם המשתמש שמור במערכת
     useEffect(() => {
-        localStorage.getItem("password") ?
+        if (localStorage.getItem("password"))
             fetchData(localStorage.getItem("password"), localStorage.getItem("userName"))
-            :
+        else {
             setIsPending(false)
+            const myArray = [];
+            const lastSearches = JSON.stringify(myArray);
+            localStorage.setItem('lastSearches', lastSearches);
+        }
     }, []) // לבדוק אם צריך לנקות
 
     // בדיקה האם המשתמש שהוזן נכון

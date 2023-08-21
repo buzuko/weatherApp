@@ -10,7 +10,6 @@ function WeatherPage() {
     const { data, isPending2 } = useAllCities("getAllCities", false)
     const { isPending, error } = useContext(AppContext);
 
-
     return (
         <div className="WeatherPage">
             {!error ?
@@ -22,8 +21,9 @@ function WeatherPage() {
                             />
                             {!isPending ?
                                 <>
-                                    <Body /> {/* יש שגיעה שזה לא יכול להיות מתחת לדיב */}
+                                    <Body />
                                     <Days />
+                                    <h1></h1>
                                 </>
                                 :
                                 <h1>Loading...</h1>

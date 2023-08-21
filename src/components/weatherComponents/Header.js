@@ -9,6 +9,7 @@ function Header(info) {
     const [selected, setSelected] = useState("Jerusalem")
     const [buttonSelect, setButtonSelect] = useState("Jerusalem")
     const { data, isPending } = useContext(AppContext);
+    //localStorage.setItem("lastSearches", [])
 
     const { } = useAllCities(`cities/${buttonSelect}`, true) //  כשזה טוען המסך עדיין מציג את הכל
 
@@ -18,7 +19,7 @@ function Header(info) {
         </option>
     ));
 
-    function serch() {
+    function search() {
         setButtonSelect(selected)
     }
     return (
@@ -34,7 +35,7 @@ function Header(info) {
                         >
                             {cityOptions}
                         </select>
-                        <button onClick={serch} className="header-icon">
+                        <button onClick={search} className="header-icon">
                             <FontAwesomeIcon icon={faSearch} />
                         </button>
                     </>

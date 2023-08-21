@@ -5,12 +5,13 @@ import rainbow from "./rainbow.png"
 
 // בדיקה: איזה לוגו צריך להיות ביום
 export function LogoIcon(data, num) {
-    const tempMin = data.daily[num].temp.min - 273.15
+    const tempEve = data.daily[num].temp.eve - 273.15
     const tempMax = data.daily[num].temp.max - 273.15
-    const temp = ((tempMin + tempMax) / 2).toFixed(2)
+    const temp = ((tempEve + tempMax) / 2).toFixed(2)
 
     let logo;
     if (data.daily[num].temp.day - 273.15 > 29) {
+        console.log(data.daily[0].temp.day - 273.15)
         logo = sunny
     } else if (data.daily[num].clouds > 20) {
         logo = partly_cloudy
@@ -31,7 +32,7 @@ export function weatherColor(data) {
     (data.feels_like.night - data.temp.night > 1) && color++
 
     if (color === 1) {
-        return "rgba(128, 128, 128, 0.1)" // gray
+        return "rgba(128, 128, 128, 0.3)" // gray
     } else if (color === 2) {
         return "rgba(255, 166, 0, 0.1)" // orange
     } else {
