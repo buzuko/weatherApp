@@ -5,8 +5,8 @@ function HeaderRouter() {
 
     return (
         <div className="HeaderRouter">
-            <Link to={"/ConectPage"} className="links">ראשי</Link>
-            <Link to={"/ConectPage"} className="links">משני</Link>
+            <Link to={"/"} className="links">ראשי</Link>
+            <Link to={"/"} className="links">משני</Link>
         </div>
     )
 }
