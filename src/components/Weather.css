@@ -13,7 +13,7 @@
 
 
 .WeatherPage {
-    background-image: url('../cloudIMJ.jpg');
+    background-image: url("../addOns/cloudIMJ.jpg");
     background-size: cover;
     background-position: center;
     width: 100%;
