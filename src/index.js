@@ -6,7 +6,6 @@ import reportWebVitals from './reportWebVitals';
 import { AppProvider } from './addOns/AppProvider.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-//console.log(process.env.REACT_APP_MAX)
 
 root.render(
   <React.StrictMode>

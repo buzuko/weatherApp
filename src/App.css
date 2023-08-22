@@ -48,3 +48,25 @@
   color: white;
   margin-right: 30px;
 }
+
+
+.TableExample {
+  margin: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid #dddddd;
+  padding: 15px;
+  text-align: center;
+}
+
+
+th {
+  background-color: #f2f2f2;
+}

@@ -6,7 +6,8 @@ import Days from "./weatherComponents/days";
 import { AppContext } from "../addOns/AppProvider";
 import { useAllCities } from "../addOns/dataHooks";
 
-function WeatherPage() {
+
+function WeatherPage(props) {
     const { data, isPending2 } = useAllCities("getAllCities", false)
     const { isPending, error } = useContext(AppContext);
 
@@ -18,6 +19,7 @@ function WeatherPage() {
                         <>
                             <Header
                                 info={data}
+                            // current={receivedData}
                             />
                             {!isPending ?
                                 <>

@@ -6,13 +6,13 @@ import { AppContext } from "../../addOns/AppProvider";
 import { useAllCities } from "../../addOns/dataHooks";
 
 function Header(info) {
-    const [selected, setSelected] = useState("Jerusalem")
-    const [buttonSelect, setButtonSelect] = useState("Jerusalem")
-    const { data, isPending } = useContext(AppContext);
-    //localStorage.setItem("lastSearches", [])
+    const info2 = localStorage.getItem("lastSearches")
+    const [selected, setSelected] = useState(info2 ? JSON.parse(info2).length ? JSON.parse(info2)[JSON.parse(info2).length - 1].city : "Jerusalem" : "Jerusalem");
+    const [buttonSelect, setButtonSelect] = useState(info2 ? JSON.parse(info2).length ? JSON.parse(info2)[JSON.parse(info2).length - 1].city : "Jerusalem" : "Jerusalem");
+    const { data, isPending, setCurrent } = useContext(AppContext);
 
     const { } = useAllCities(`cities/${buttonSelect}`, true) //  כשזה טוען המסך עדיין מציג את הכל
-
+    setCurrent(null)
     const cityOptions = info.info.map((res, index) => (
         <option key={index} value={res.city}>
             {res.city}
@@ -20,6 +20,7 @@ function Header(info) {
     ));
 
     function search() {
+        console.log("dekel")
         setButtonSelect(selected)
     }
     return (

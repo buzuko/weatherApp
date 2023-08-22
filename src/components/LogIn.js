@@ -32,6 +32,7 @@ function LogIn() {
             const myArray = [];
             const lastSearches = JSON.stringify(myArray);
             localStorage.setItem('lastSearches', lastSearches);
+            localStorage.setItem('weatherData', lastSearches);
         }
     }, []) // לבדוק אם צריך לנקות
 

@@ -7,68 +7,116 @@ import { AppContext } from "../addOns/AppProvider";
 export function useAllCities(URL, bool) {
     const [isPending2, setIsPending2] = useState(true)
     const [data, setData] = useState(null)
-    const { setWeatherData, setIsPending, setCity, setError } = useContext(AppContext);
-
+    const { current, setWeatherData, setIsPending, setCity, setError, setLocalStorageNum } = useContext(AppContext);
+    const stored = localStorage.getItem("weatherData")
     useEffect(() => {
-        bool ? setIsPending(true) : setIsPending2(true)
-        const timerId = setTimeout(async () => {
+        if (bool && current) {
+            console.log("here 1")
+            setWeatherData(current)
+            setData(current)
+            setIsPending2(false)
+            // setIsPending(false)
+        } else {
+            console.log("here 2")
 
-            try {
-                const res = await axios(`http://localhost:3001/${URL}`, {
-                    headers: {
-                        user_mispar_ishi: localStorage.getItem("password"),
-                        user_name: localStorage.getItem("userName"),
-                    }
-                })
-                setData(res.data);
-                bool && setCity(URL.split("/")[1])
+            bool ? setIsPending(true) : setIsPending2(true)
+            const timerId = setTimeout(async () => {
 
-                if (bool) {
-                    async function fetchData() {
-                        try {
-                            const res2 = await axios(`https://api.openweathermap.org/data/2.5/onecall?lat=${res.data.latitude}&lon=${res.data.longitude}&appid=6f11fa9760902e1597265ad205f05d2c`);
-                            setWeatherData(res2.data)
-                            varifySearched(res2.data)
-                            setIsPending(false)
-                        } catch (error) {
-                            setError(error.message);
+                try {
+                    const res = await axios(`http://localhost:3001/${URL}`, {
+                        headers: {
+                            user_mispar_ishi: localStorage.getItem("password"),
+                            user_name: localStorage.getItem("userName"),
                         }
+                    })
+                    !bool && localStorage.setItem("allCountry", JSON.stringify(res.data))
+                    setData(res.data);
+                    bool && setCity(URL.split("/")[1])
+
+                    if (bool) {
+                        async function fetchData() {
+                            try {
+                                const res2 = await axios(`https://api.openweathermap.org/data/2.5/onecall?lat=${res.data.latitude}&lon=${res.data.longitude}&appid=6f11fa9760902e1597265ad205f05d2c`);
+                                setWeatherData(res2.data)
+                                varifySearched2(res2.data)
+                                varifySearched(URL, true)
+
+                                setLocalStorageNum(JSON.parse(localStorage.getItem('lastSearches')).length)
+                                setIsPending(false)
+                            } catch (error) {
+                                setError(error.message);
+                            }
+                        }
+                        fetchData();
                     }
-
-                    fetchData();
+                } catch (error) {
+                    setError(error.message);
+                    bool ? setIsPending(false) : setIsPending2(false)
                 }
-            } catch (error) {
-                setError(error.message);
-                bool ? setIsPending(false) : setIsPending2(false)
+            }, 100);
+            return () => {
+                clearTimeout(timerId);
             }
-        }, 100);
-        return () => {
-            clearTimeout(timerId);
         }
-
     }, [URL]);
     return { data };
+
 }
 
 // שומר את המקומות האחרונים
-function varifySearched(res) {
+function varifySearched(URL) {
+    const storedCityString = JSON.parse(localStorage.getItem('allCountry'));
     const storedArrayString = localStorage.getItem('lastSearches');
     const lastSearches = storedArrayString ? JSON.parse(storedArrayString) : [];
 
     let i = -1
-    lastSearches.map((element, index) => {
-        if (element.timezone === res.timezone)
-            i = index
+    let i2 = -1
+    storedCityString.map((element, index) => {
+        if (element.city === URL.split("/")[1]) {
+            i2 = index
+            lastSearches[0] && lastSearches.map((element, index) => {
+                if (element.city === URL.split("/")[1])
+                    i = index
+            })
+        }
     })
+
     i !== -1 && lastSearches.splice(i, 1);
 
     if (lastSearches.length < process.env.REACT_APP_MAX) {
-        lastSearches.push(res);
+        lastSearches.push(storedCityString[i2]);
         localStorage.setItem('lastSearches', JSON.stringify(lastSearches));
     }
     else {
         lastSearches.shift();
-        lastSearches.push(res);
+        lastSearches.push(storedCityString[i2]);
         localStorage.setItem("lastSearches", JSON.stringify(lastSearches))
     }
+}
+
+function varifySearched2(res) {
+    const storedArrayString = localStorage.getItem('weatherData');
+    const lastSearches = storedArrayString ? JSON.parse(storedArrayString) : [];
+
+    let i = -1
+    lastSearches.length && lastSearches.map((element, index) => {
+        if (element.lat === res.lat && element.lon === res.lon) {
+            i = index
+        }
+    })
+    i !== -1 && lastSearches.splice(i, 1);
+
+
+
+    if (lastSearches.length < process.env.REACT_APP_MAX) {
+        lastSearches.push(res);
+        localStorage.setItem('weatherData', JSON.stringify(lastSearches));
+
+    }
+    else {
+        lastSearches.shift();
+        lastSearches.push(res);
+        localStorage.setItem("weatherData", JSON.stringify(lastSearches))
+    }
+
 }
