@@ -3,6 +3,7 @@ import LogIn from "./components/LogIn";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import WeatherPage from './components/WeatherPage';
 import HeaderRouter from './components/HeaderRouter';
+import Mador from "./components/mador"
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
             </Route>
             <Route exact path="/WeatherPage">
               <WeatherPage />
+            </Route>
+            <Route exact path="/Mador">
+              <Mador />
             </Route>
           </Switch>
 

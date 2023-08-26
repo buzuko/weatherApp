@@ -8,9 +8,10 @@ export function AppProvider({ children }) {
     const [isPending, setIsPending] = useState(true);
     const [weatherData, setWeatherData] = useState(null)
     const [error, setError] = useState(null)
+    const [soldiersData, setSoldiersData] = useState(null)
 
     return (
-        <AppContext.Provider value={{ data, setData, weatherData, setWeatherData, isPending, setIsPending, city, setCity, error, setError }}>
+        <AppContext.Provider value={{ data, setData, weatherData, setWeatherData, isPending, setIsPending, city, setCity, error, setError, soldiersData, setSoldiersData }}>
             {children}
         </AppContext.Provider>
     );

@@ -38,7 +38,7 @@
   flex-direction: row-reverse;
   justify-content: flex-start;
   background-color: rgb(13, 13, 53);
-  height: 40px;
+  min-height: 5vh;
   align-items: center;
   font-size: 20px;
 

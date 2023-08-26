@@ -22,7 +22,7 @@ export function useAllCities(URL, bool) {
                 })
                 setData(res.data);
                 bool && setCity(URL.split("/")[1])
-
+                setIsPending2(false)
                 if (bool) {
                     async function fetchData() {
                         try {
@@ -31,6 +31,7 @@ export function useAllCities(URL, bool) {
                             varifySearched(res2.data)
                             setIsPending(false)
                         } catch (error) {
+                            setIsPending(false)
                             setError(error.message);
                         }
                     }
@@ -41,13 +42,13 @@ export function useAllCities(URL, bool) {
                 setError(error.message);
                 bool ? setIsPending(false) : setIsPending2(false)
             }
-        }, 100);
+        }, 1000);
         return () => {
             clearTimeout(timerId);
         }
 
     }, [URL]);
-    return { data };
+    return { data, isPending2 };
 }
 
 // שומר את המקומות האחרונים

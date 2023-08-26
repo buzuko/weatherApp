@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Header from "./weatherComponents/Header";
 import './Weather.css';
 import Body from "./weatherComponents/body";
@@ -10,8 +10,12 @@ function WeatherPage() {
     const { data, isPending2 } = useAllCities("getAllCities", false)
     const { isPending, error } = useContext(AppContext);
 
+
     return (
         <div className="WeatherPage">
+
+
+
             {!error ?
                 <>
                     {data && !isPending2 && !error ? (
