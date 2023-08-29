@@ -14,9 +14,10 @@ function App() {
             <Route exact path="/LogIn">
               <LogIn />
             </Route>
-            <Route exact path="/WeatherPage">
-              <WeatherPage />
-            </Route>
+            {localStorage.getItem("userName") &&
+              <Route exact path="/WeatherPage">
+                <WeatherPage />
+              </Route>}
           </Switch>
 
         </Router>

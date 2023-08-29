@@ -11,7 +11,6 @@ export function LogoIcon(data, num) {
 
     let logo;
     if (data.daily[num].temp.day - 273.15 > 29) {
-        console.log(data.daily[0].temp.day - 273.15)
         logo = sunny
     } else if (data.daily[num].clouds > 20) {
         logo = partly_cloudy
