@@ -9,11 +9,20 @@ export function AppProvider({ children }) {
     const [isPending, setIsPending] = useState(true);
     const [weatherData, setWeatherData] = useState(null)
     const [error, setError] = useState(null)
+    const [soldiersData, setSoldiersData] = useState(null)
+    const [newSoldiersData, setNewSoldiersData] = useState(null)
+    const [selected, setSelected] = useState(soldiersData)
+    const [isChanged, setIsChanged] = useState(false)
+    const [isSaved, setIsSaved] = useState(false)
     const [localStorageNum, setLocalStorageNum] = useState(0)
     const [current, setCurrent] = useState(null)
 
     return (
-        <AppContext.Provider value={{ data, setData, weatherData, setWeatherData, isPending, setIsPending, city, setCity, error, setError, localStorageNum, setLocalStorageNum, current, setCurrent }}>
+        <AppContext.Provider value={{
+            data, setData, weatherData, setWeatherData, isPending, setIsPending, city, setCity, error, setError,
+            soldiersData, setSoldiersData, selected, setSelected, isChanged, setIsChanged, isSaved, setIsSaved,
+            localStorageNum, setLocalStorageNum, current, setCurrent
+        }}>
             {children}
         </AppContext.Provider>
     );

@@ -1,18 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Header from "./weatherComponents/Header";
 import './Weather.css';
 import Body from "./weatherComponents/body";
 import Days from "./weatherComponents/days";
 import { AppContext } from "../addOns/AppProvider";
-import { useAllCities } from "../addOns/dataHooks";
+import { useAllCities } from "../addOns/weatherHooks";
 
 
 function WeatherPage(props) {
     const { data, isPending2 } = useAllCities("getAllCities", false)
     const { isPending, error } = useContext(AppContext);
 
+
     return (
         <div className="WeatherPage">
+
+
+
             {!error ?
                 <>
                     {data && !isPending2 && !error ? (

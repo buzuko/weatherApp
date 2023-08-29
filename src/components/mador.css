@@ -1,0 +1,530 @@
+/* Mador component */
+
+.Mador {
+    width: 100%;
+    min-height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #282c34;
+}
+
+.Button {
+    font-size: 50px;
+    border-radius: 10px;
+}
+
+.popUpPage {}
+
+/* end of Mador component */
+
+
+/* MadorPage component */
+.MadorPage {
+    position: relative;
+    width: 579px;
+    height: 725px;
+    /* padding: 27px 0 0; */
+    border-radius: 15px;
+    box-shadow: 0 1px 11px 1px rgba(0, 0, 0, 0.12);
+    background-color: #fff;
+}
+
+/* end of Madorpage component */
+
+
+/* MadorHeader component */
+.MadorHeader {}
+
+.exit {
+    border-radius: 15px;
+    width: 30px;
+    height: 30px;
+    padding: 4px;
+    object-fit: contain;
+}
+
+
+
+.Rectangle {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    width: 579px;
+    height: 69px;
+    margin: 1px 0 14.5px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    background-color: #fdfdff;
+
+}
+
+.topIcon {
+    width: 27px;
+    height: 27px;
+    margin-right: 30px;
+    padding: 6px;
+    border-radius: 5px;
+    background-image: linear-gradient(to bottom, #6338d2 0%, #9255ef);
+}
+
+.iconsChange {
+    width: 25px;
+    height: 25px;
+    /* padding: 2px 3px 1px 2px; */
+    align-items: center;
+    align-items: center;
+    justify-content: right;
+    text-align: center;
+}
+
+.RectangleText {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 20px;
+    color: #282949;
+}
+
+.RectangleText h3 {
+    position: relative;
+    font-family: Heebo;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+
+.time {
+    position: absolute;
+    margin-top: 50px;
+    font-size: 12px;
+    font-family: Heebo;
+    text-align: right;
+    color: #000000;
+}
+
+/* end of MadorHeader component */
+
+
+/* Registration component */
+.Registration {
+    display: flex;
+    flex-direction: row-reverse;
+    border: none;
+
+}
+
+.enter {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+}
+
+.form input {
+
+    margin-right: 38px;
+    font-family: Heebo;
+    border: none;
+    font-size: 14px;
+    width: 500px;
+    text-align: right;
+    color: #000000;
+}
+
+.regLine {
+    width: 504px;
+    height: 1px;
+    margin: 11.5px 38px 11px 37px;
+    background-color: #ededf4;
+}
+
+.Registration select {
+    margin-right: 32px;
+    font-family: Heebo;
+    width: 60px;
+    text-align: right;
+    display: flex;
+}
+
+
+.send {
+    width: 100px;
+    height: 27px;
+    margin-top: 20px;
+    margin-left: 20px;
+    border-radius: 5px;
+    align-items: flex-end;
+    box-shadow: none;
+    border-width: 0.8px;
+    border-color: #6b6b6b;
+    background-color: #c3c3c3;
+}
+
+.send span {
+    font-family: Heebo;
+    font-size: 15px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #fff;
+}
+
+/* end of Registration component */
+
+
+/* MadorSoldiers component */
+
+.selection {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row-reverse
+}
+
+
+
+.orderBy {
+    display: flex;
+    width: 47px;
+    height: 18px;
+    margin: 0 29px 0 0;
+    margin-top: 1px;
+    margin-bottom: 10px;
+    font-family: Heebo;
+    font-size: 12px;
+    text-align: right;
+    color: #afb0ca;
+}
+
+.MadorSoldiers-options {
+    direction: rtl;
+    width: 100px;
+    height: 18px;
+    font-family: Heebo;
+    color: #595a7f;
+    font-size: 12px;
+    margin-right: 5px;
+    text-align: right;
+    border: none;
+    outline: none;
+    /* appearance: none; */
+}
+
+.selection option:hover {
+    background-color: yellow;
+    font-size: 120px;
+
+}
+
+
+hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 10px;
+}
+
+
+.selectCard {
+    max-height: 300px;
+    max-width: 100%;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: right;
+    text-align: right;
+
+}
+
+.save {
+    width: 100px;
+    height: 27px;
+    border-radius: 5px;
+    box-shadow: none;
+    border-width: 0.8px;
+    border-color: #6b6b6b;
+    background-color: #c3c3c3;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.save span {
+    font-family: Heebo;
+    font-size: 10px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #fff;
+}
+
+
+/* end of MadorSoldiers component */
+
+
+/* SoldierCard component */
+
+.SoldierCard {
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    width: 150px;
+    height: 60px;
+    margin-right: 25px;
+    margin-bottom: 10px;
+    padding: 7px 8px 7px 0px;
+    opacity: 0.7;
+    border-radius: 6.2px;
+    background-color: #ededf4;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    cursor: pointer;
+    /* Change cursor to indicate it's clickable */
+    transition: background-color 0.3s ease;
+
+}
+
+.SoldierCard.selected {
+    /* Additional styles for the selected state */
+    background-color: #b8b5aa;
+    /* Change background color when selected */
+}
+
+.SoldierCard input {
+    position: absolute;
+    left: 9px;
+    top: 27px;
+}
+
+.checkBox {}
+
+.sortedCardsData {
+    display: inline-flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+}
+
+
+.selectCard {
+    /* display: flex; */
+
+}
+
+.selectCard h1 {
+    /* width: 50px;
+    height: 21px; */
+    /* margin: 0 0 0 6px; */
+    margin-top: 10px;
+    font-family: Heebo;
+    font-size: 14px;
+    font-weight: bold;
+    /* font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: right; */
+
+    color: #595a7f;
+
+
+}
+
+.selectCard div {
+    /* justify-content: center;
+    align-items: center; */
+}
+
+/* 
+.SoldierCard-imeges {
+    position: relative;
+    top: 8px;
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+    background-color: #ffffff;
+} */
+
+.genderLogo {
+    position: relative;
+
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+
+    border-radius: 110px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    background-color: #f4f4f4;
+
+}
+
+.IconsRankkatzin {
+    position: absolute;
+    right: 25px;
+    width: 15px;
+    height: 15px;
+    margin-top: 25px;
+    border-radius: 100px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    background-color: #f4f4f4;
+}
+
+.SoldierCard-text {
+    position: relative;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column
+}
+
+.SoldierCard-name {
+    font-size: 15px;
+    color: #20213c;
+    font-family: Heebo;
+    text-align: right;
+    overflow: hidden;
+    /* Hide the overflowing content */
+    white-space: nowrap;
+    /* Prevent text from wrapping */
+    text-overflow: ellipsis;
+
+
+}
+
+.SoldierCard-name .text-style-1 {
+    color: #20213a;
+}
+
+.SoldierCard-title {
+
+    /* margin: 12px 0.6px 1px 32.4px; */
+    margin-top: 5px;
+    font-size: 10px;
+    font-weight: bold;
+    font-family: Heebo;
+    text-align: right;
+    color: #75769a;
+}
+
+.SoldierCard-place {
+    margin-top: 3px;
+    font-family: Heebo;
+    font-size: 10px;
+    text-align: right;
+    color: #75769a;
+}
+
+
+/* end of SoldierCard component */
+
+.dropdown-button {
+    /* padding: 10px; */
+    border: none;
+    display: flex;
+    /* border-radius: 5px; */
+    /* border: 1px solid #ccc; */
+    /* margin-bottom: 13px; */
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    /* font-weight: ; */
+    /* margin: 0 29px 0 0; */
+    /* margin-top: 1px; */
+    /* margin-bottom: 10px; */
+    right: 80px;
+    bottom: 359px;
+    font-family: Heebo;
+    font-size: 12px;
+    text-align: right;
+    color: #525252;
+    position: absolute;
+
+}
+
+.dropdown-content {
+    display: flex;
+    border-radius: 6px;
+    /* -webkit-backdrop-filter: blur(16px); */
+    backdrop-filter: blur(16px);
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.15);
+    border: 1px #f5f5f6;
+    background-color: #fff;
+    margin-right: 150px;
+    margin-top: -23px;
+    align-items: flex-end;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+.dropdown-option {
+    display: block;
+    font-size: 11px;
+    /* border-bottom: none; */
+    padding: 5px;
+    cursor: pointer;
+    /* color: "#86878c"; */
+    /* transition: background-color 0.2s; */
+    width: 140px;
+    height: 25px;
+    color: #525252;
+    /* Set the width to 100% */
+    box-sizing: border-box;
+    text-align: right;
+    transition: background-color 0.5s;
+    /* background-color: #e4e4e4; */
+    /* align-items: center;
+    justify-content: center; */
+    /* text-align: center; */
+    border-bottom: 0.5px solid #ccc;
+
+
+}
+
+.dropdown-option.selected {
+    background-color: #f0f0f0;
+}
+
+.Separator {
+
+    border-bottom: none;
+    /* Remove the border-bottom from the last option */
+    width: 143px;
+    height: 1px;
+    margin: 28px 0 0;
+    background-color: #ededf4;
+}
+
+.popup-content {
+    right: auto;
+}
+
+.dropdown-option.selected {
+    font-weight: bold;
+    background-color: #fff;
+}
+
+.dropDownIcon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    margin-top: 3px;
+    /* Add spacing between icon and text */
+}
+
+.dropdownText {
+    position: relative;
+    /* margin-bottom: 10px; */
+}
+
+.dropdownContent {
+    display: flex;
+    align-items: center;
+    /* Vertically align items */
+}

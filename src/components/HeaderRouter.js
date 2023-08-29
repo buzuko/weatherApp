@@ -11,7 +11,7 @@ function HeaderRouter() {
     }
     return (
         <div className="HeaderRouter">
-            <Link to={"/WeatherPage"} className="links" onClick={returnMain}>ראשי</Link>
+            <Link to={"/Login"} className="links" onClick={returnMain}>ראשי</Link>
             {localStorage.getItem("lastSearches") ? <Link to={"/History"} className="links">היסטוריה - {localStorage.getItem("lastSearches") ? JSON.parse(localStorage.getItem("lastSearches")).length : "0"}</Link>
                 :
                 <p className="links">היסטוריה - 0</p>

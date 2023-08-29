@@ -3,7 +3,7 @@ import '../Weather.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { AppContext } from "../../addOns/AppProvider";
-import { useAllCities } from "../../addOns/dataHooks";
+import { useAllCities } from "../../addOns/weatherHooks";
 
 function Header(info) {
     const info2 = localStorage.getItem("lastSearches")

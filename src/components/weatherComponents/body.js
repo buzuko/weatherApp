@@ -16,6 +16,7 @@ function Body() {
 
     return (
         <div className="body" ref={colorRef}>
+
             <img src={logo} className="sun_no_background" alt="sun_no_background" />
             <div className="todayData">
                 <h5>היום</h5>
