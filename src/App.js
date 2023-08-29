@@ -20,15 +20,17 @@ function App() {
             <Route exact path="/LogIn">
               <LogIn />
             </Route>
-            <Route exact path="/WeatherPage">
-              <WeatherPage />
-            </Route>
+            {
+              <Route exact path="/WeatherPage">
+                <WeatherPage />
+              </Route>}
             <Route exact path="/Mador">
               <Mador />
             </Route>
             <Route exact path="/History">
               <History />
             </Route>
+
           </Switch>
 
         </Router>

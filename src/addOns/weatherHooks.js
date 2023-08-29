@@ -10,11 +10,13 @@ export function useAllCities(URL, bool) {
     const { current, setWeatherData, setIsPending, setCity, setError, setLocalStorageNum } = useContext(AppContext);
     const stored = localStorage.getItem("weatherData")
     useEffect(() => {
+        console.log(current)
         if (bool && current) {
+            console.log(current)
             setWeatherData(current)
             setData(current)
             setIsPending2(false)
-            // setIsPending(false)
+            setIsPending(false)
         } else {
 
             bool ? setIsPending(true) : setIsPending2(true)
