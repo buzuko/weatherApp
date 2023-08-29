@@ -1,7 +1,7 @@
 import { React, useContext, useState } from "react";
-import { Bar } from 'react-chartjs-2';
+//import { Bar } from 'react-chartjs-2';
 import '../App.css';
-import 'chart.js/auto';
+//import 'chart.js/auto';
 import TablePart from "./tablePart";
 import { AppContext } from "../addOns/AppProvider";
 

@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
-import { Bar } from 'react-chartjs-2';
+//import { Bar } from 'react-chartjs-2';
 import { Link } from "react-router-dom";
 import '../App.css';
-import 'chart.js/auto';
+//import 'chart.js/auto';
 import { AppContext } from "../addOns/AppProvider";
 
 
