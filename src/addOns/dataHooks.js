@@ -11,13 +11,11 @@ export function useAllCities(URL, bool) {
     const stored = localStorage.getItem("weatherData")
     useEffect(() => {
         if (bool && current) {
-            console.log("here 1")
             setWeatherData(current)
             setData(current)
             setIsPending2(false)
             // setIsPending(false)
         } else {
-            console.log("here 2")
 
             bool ? setIsPending(true) : setIsPending2(true)
             const timerId = setTimeout(async () => {

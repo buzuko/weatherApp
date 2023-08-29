@@ -51,6 +51,7 @@ function LogIn() {
             localStorage.setItem("fullName", res.data.First_Name + " " + res.data.Last_Name)
             setIsPending(false)
             setData(res.data)
+
             history.push("/WeatherPage");
 
         } catch (error) {

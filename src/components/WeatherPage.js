@@ -16,6 +16,7 @@ function WeatherPage(props) {
             {!error ?
                 <>
                     {data && !isPending2 && !error ? (
+
                         <>
                             <Header
                                 info={data}

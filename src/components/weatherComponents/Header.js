@@ -20,7 +20,6 @@ function Header(info) {
     ));
 
     function search() {
-        console.log("dekel")
         setButtonSelect(selected)
     }
     return (

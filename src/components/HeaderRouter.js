@@ -7,7 +7,6 @@ function HeaderRouter() {
     const [num, setNum] = useState(localStorageNum)
     const data = localStorage.getItem("weatherData")
     function returnMain() {
-        console.log(JSON.parse(data).length)
         JSON.parse(data).length && setCurrent(JSON.parse(data)[JSON.parse(data).length - 1])
     }
     return (
