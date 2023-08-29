@@ -14,11 +14,14 @@
     border-radius: 10px;
 }
 
+.popUpPage {}
+
 /* end of Mador component */
 
 
 /* MadorPage component */
 .MadorPage {
+    position: relative;
     width: 579px;
     height: 725px;
     /* padding: 27px 0 0; */
@@ -114,15 +117,16 @@
 .enter {
     align-items: flex-end;
     display: flex;
-    flex-direction: column
+    flex-direction: column;
 }
 
 .form input {
 
-    margin-right: 30px;
+    margin-right: 38px;
     font-family: Heebo;
     border: none;
     font-size: 14px;
+    width: 500px;
     text-align: right;
     color: #000000;
 }
@@ -135,9 +139,9 @@
 }
 
 .Registration select {
-    margin-right: 30px;
+    margin-right: 32px;
     font-family: Heebo;
-    width: 50px;
+    width: 60px;
     text-align: right;
     display: flex;
 }
@@ -148,13 +152,12 @@
     height: 27px;
     margin-top: 20px;
     margin-left: 20px;
-    align-items: flex-end;
     border-radius: 5px;
+    align-items: flex-end;
     box-shadow: none;
-    border-width: 1px;
-    border-color: #cfcfcf;
-    background-color: #dadada;
-
+    border-width: 0.8px;
+    border-color: #6b6b6b;
+    background-color: #c3c3c3;
 }
 
 .send span {
@@ -204,13 +207,9 @@
     font-size: 12px;
     margin-right: 5px;
     text-align: right;
-    /* appearance: none; */
     border: none;
     outline: none;
-
-
-
-
+    /* appearance: none; */
 }
 
 .selection option:hover {
@@ -235,7 +234,7 @@ hr {
     flex-wrap: wrap;
     align-items: center;
     justify-content: right;
-    text-align: center;
+    text-align: right;
 
 }
 
@@ -244,16 +243,16 @@ hr {
     height: 27px;
     border-radius: 5px;
     box-shadow: none;
-    border-width: 1px;
-    border-color: #cfcfcf;
-    background-color: #dadada;
+    border-width: 0.8px;
+    border-color: #6b6b6b;
+    background-color: #c3c3c3;
     margin-left: 20px;
     margin-top: 10px;
 }
 
 .save span {
     font-family: Heebo;
-    font-size: 15px;
+    font-size: 10px;
     font-weight: bold;
     font-stretch: normal;
     font-style: normal;
@@ -276,19 +275,69 @@ hr {
     width: 150px;
     height: 60px;
     margin-right: 25px;
-    margin-top: 25px;
+    margin-bottom: 10px;
     padding: 7px 8px 7px 0px;
     opacity: 0.7;
     border-radius: 6.2px;
     background-color: #ededf4;
-    /* text-align: center; */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
+    cursor: pointer;
+    /* Change cursor to indicate it's clickable */
+    transition: background-color 0.3s ease;
+
+}
+
+.SoldierCard.selected {
+    /* Additional styles for the selected state */
+    background-color: #b8b5aa;
+    /* Change background color when selected */
+}
+
+.SoldierCard input {
+    position: absolute;
+    left: 9px;
+    top: 27px;
+}
+
+.checkBox {}
+
+.sortedCardsData {
+    display: inline-flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
 }
 
 
 .selectCard {
-    display: flex;
+    /* display: flex; */
 
+}
+
+.selectCard h1 {
+    /* width: 50px;
+    height: 21px; */
+    /* margin: 0 0 0 6px; */
+    margin-top: 10px;
+    font-family: Heebo;
+    font-size: 14px;
+    font-weight: bold;
+    /* font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: right; */
+
+    color: #595a7f;
+
+
+}
+
+.selectCard div {
+    /* justify-content: center;
+    align-items: center; */
 }
 
 /* 
@@ -301,7 +350,7 @@ hr {
     background-color: #ffffff;
 } */
 
-.dayLogo {
+.genderLogo {
     position: relative;
 
     width: 30px;
@@ -337,6 +386,11 @@ hr {
     color: #20213c;
     font-family: Heebo;
     text-align: right;
+    overflow: hidden;
+    /* Hide the overflowing content */
+    white-space: nowrap;
+    /* Prevent text from wrapping */
+    text-overflow: ellipsis;
 
 
 }
@@ -366,3 +420,111 @@ hr {
 
 
 /* end of SoldierCard component */
+
+.dropdown-button {
+    /* padding: 10px; */
+    border: none;
+    display: flex;
+    /* border-radius: 5px; */
+    /* border: 1px solid #ccc; */
+    /* margin-bottom: 13px; */
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    /* font-weight: ; */
+    /* margin: 0 29px 0 0; */
+    /* margin-top: 1px; */
+    /* margin-bottom: 10px; */
+    right: 80px;
+    bottom: 359px;
+    font-family: Heebo;
+    font-size: 12px;
+    text-align: right;
+    color: #525252;
+    position: absolute;
+
+}
+
+.dropdown-content {
+    display: flex;
+    border-radius: 6px;
+    /* -webkit-backdrop-filter: blur(16px); */
+    backdrop-filter: blur(16px);
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.15);
+    border: 1px #f5f5f6;
+    background-color: #fff;
+    margin-right: 150px;
+    margin-top: -23px;
+    align-items: flex-end;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+.dropdown-option {
+    display: block;
+    font-size: 11px;
+    /* border-bottom: none; */
+    padding: 5px;
+    cursor: pointer;
+    /* color: "#86878c"; */
+    /* transition: background-color 0.2s; */
+    width: 140px;
+    height: 25px;
+    color: #525252;
+    /* Set the width to 100% */
+    box-sizing: border-box;
+    text-align: right;
+    transition: background-color 0.5s;
+    /* background-color: #e4e4e4; */
+    /* align-items: center;
+    justify-content: center; */
+    /* text-align: center; */
+    border-bottom: 0.5px solid #ccc;
+
+
+}
+
+.dropdown-option.selected {
+    background-color: #f0f0f0;
+}
+
+.Separator {
+
+    border-bottom: none;
+    /* Remove the border-bottom from the last option */
+    width: 143px;
+    height: 1px;
+    margin: 28px 0 0;
+    background-color: #ededf4;
+}
+
+.popup-content {
+    right: auto;
+}
+
+.dropdown-option.selected {
+    font-weight: bold;
+    background-color: #fff;
+}
+
+.dropDownIcon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    margin-top: 3px;
+    /* Add spacing between icon and text */
+}
+
+.dropdownText {
+    position: relative;
+    /* margin-bottom: 10px; */
+}
+
+.dropdownContent {
+    display: flex;
+    align-items: center;
+    /* Vertically align items */
+}

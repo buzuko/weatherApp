@@ -1,10 +1,12 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useState, useContext } from "react";
 import exitIcon from "../../addOns/exitIcon.png"
 import iconsChange from "../../addOns/iconsChange.png"
 
-function MadorHeader() {
+
+function MadorHeader({ changeClicked }) {
     const [currentTime, setCurrentTime] = useState(new Date());
 
+    // מעדכן את התאריך כל שניה
     useEffect(() => {
         const timeID = setInterval(() => {
             setCurrentTime(new Date())
@@ -20,7 +22,7 @@ function MadorHeader() {
 
     return (
         <div className="MadorHeader">
-            <img src={exitIcon} className="exit" alt="Exit Icon" />
+            <img src={exitIcon} className="exit" alt="Exit Icon" onClick={changeClicked} />
             <div className="line"></div>
             <div className="Rectangle">
                 <div className="topIcon">
