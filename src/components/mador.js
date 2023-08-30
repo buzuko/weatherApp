@@ -1,4 +1,4 @@
-import { React, useContext, useState, useEffect } from "react";
+import { React, useContext, useState, useEffect, useRef } from "react";
 import MadorPage from "./madorComponents/madorPage";
 import './mador.css';
 import { useAllCities } from "../addOns/soldiersHooks";
@@ -9,24 +9,40 @@ import OrderSelect from "./madorComponents/orderSelect";
 
 
 function Mador() {
-    const { error, setSoldiersData, setIsChanged, setSelected, isSaved, setIsSaved } = useContext(AppContext);
+    const { error, soldiersData, setSoldiersData, setIsChanged, setSelected, isSaved, setIsSaved, isPending, setIsPending, newSoldiersData, setNewSoldiersData } = useContext(AppContext);
     const [isClick, setIsClick] = useState(false)
 
-    const { data, isPending2 } = useAllCities("getAllSoldiers", false)
     const [showPopup, setShowPopup] = useState(false);
-
+    const { data, isPending2 } = useAllCities("getAllSoldiers", false)
+    const [isClosed, setIsClosed] = useState(true)
+    const popRef = useRef(null)
+    setIsPending(false)
+    console.log(isClosed)
     const handleButtonClick = () => {
         // Perform your action here before showing the popup
-
         //console.log(data)
         //console.log(sol)
-        !isSaved ? setSoldiersData(data) : setIsSaved(false)
+        if (!isSaved) {
+            setSoldiersData(data)
+            //setNewSoldiersData(data)
+        } else {
+            setNewSoldiersData(soldiersData)
+        }
+        //setIsSaved(false)
         setShowPopup(true);
     };
+    function changeIsClosed() {
+        setIsClosed(!isClosed)
+    }
 
     useEffect(() => {
         //setSoldiersData(data)
+        setNewSoldiersData(data)
     }, [data])
+
+    // useEffect(() => {
+    //     console.log("here5")
+    // }, [soldiersData])
 
 
     function changeClicked() {
@@ -42,16 +58,20 @@ function Mador() {
                 !error ?
                     <>
                         {/* <OrderSelect /> */}
-                        <button className="Button" onClick={handleButtonClick}>
+
+                        {!isPending ? <button className="Button" onClick={handleButtonClick}>
                             פתיחת חלון
-                        </button>
-                        <Popup className="popupPage"
-                            closeOnDocumentClick={false}
+                        </button> : <h1>Loading...</h1>}
+                        <Popup key={2} className="popupPage"
+                            closeOnDocumentClick={isClosed}
+                            //open={innerPopupOpen}
+                            ref={popRef}
                             open={showPopup}
                             onClose={changeClicked}
                             position="center center"
                         >
-                            <MadorPage changeClicked={changeClicked} />
+                            <MadorPage changeClicked={changeClicked}
+                                changeIsClosed={changeIsClosed} />
                         </Popup>
 
                         {/* {!isClick ?

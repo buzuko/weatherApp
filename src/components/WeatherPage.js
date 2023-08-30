@@ -10,12 +10,8 @@ import { useAllCities } from "../addOns/weatherHooks";
 function WeatherPage(props) {
     const { data, isPending2 } = useAllCities("getAllCities", false)
     const { isPending, error } = useContext(AppContext);
-
-
     return (
         <div className="WeatherPage">
-
-
 
             {!error ?
                 <>

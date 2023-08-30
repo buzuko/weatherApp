@@ -20,7 +20,7 @@ export function AppProvider({ children }) {
     return (
         <AppContext.Provider value={{
             data, setData, weatherData, setWeatherData, isPending, setIsPending, city, setCity, error, setError,
-            soldiersData, setSoldiersData, selected, setSelected, isChanged, setIsChanged, isSaved, setIsSaved,
+            soldiersData, setSoldiersData, newSoldiersData, setNewSoldiersData, selected, setSelected, isChanged, setIsChanged, isSaved, setIsSaved,
             localStorageNum, setLocalStorageNum, current, setCurrent
         }}>
             {children}

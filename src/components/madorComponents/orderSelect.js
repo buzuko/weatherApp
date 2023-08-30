@@ -3,7 +3,7 @@ import Popup from 'reactjs-popup'
 import dropDownIcon from "../../addOns/dropDownIcon.png"
 
 
-function CustomDropdown({ options, setSelectedOption }) {
+function CustomDropdown({ options, setSelectedOption, changeIsClosed }) {
     const [selectedOption2, setSelectedOption2] = useState(null);
     const [index2, setIndex2] = useState(0)
 
@@ -24,10 +24,10 @@ function CustomDropdown({ options, setSelectedOption }) {
         setIndex2(index)
         setSelectedOption2(option);
         setSelectedOption(option);
+
         if (popupRef.current) {
             popupRef.current.close();
         }
-        console.log(index)
 
     };
 
@@ -59,9 +59,11 @@ function CustomDropdown({ options, setSelectedOption }) {
         // setSelectedOption2(null)
         // setIndex2(0)
     }
+    function triggerd() {
+    }
 
     return (
-        <Popup
+        <Popup key={2} className='2ndPopup'
             trigger={<button className="dropdown-button"> <div className="dropdownContent" >
                 <img src={dropDownIcon} className="dropDownIcon" alt="dropDownIcon" />
                 <p className='dropdownText'>{selectedOption2 ? selectedOption2.name : "עיר"}</p>
@@ -69,6 +71,8 @@ function CustomDropdown({ options, setSelectedOption }) {
             position="bottom center"
             closeOnDocument Click={true}
             ref={popupRef}
+            onOpen={changeIsClosed}
+            onClose={changeIsClosed}
             contentStyle={{ padding: '0', border: 'none' }}
         >
             <div className="dropdown-content">

@@ -7,8 +7,10 @@ export default function Sort(category) {
 
     const categories = [];
     const cards = [];
-
+    // console.log("3")
+    // console.log(soldiersData)
     soldiersData.forEach((item) => {
+        //console.log(soldiersData)
         let categoryIdentifier;
 
         if (category.name === "תפקיד + דרגה") {
@@ -33,6 +35,7 @@ export default function Sort(category) {
             matchingCard = cards.find((card) => card.categoryIdentifier === categoryIdentifier);
 
         }
+
         matchingCard.data.push(<SoldierCard key={item.id} item={item} />);
     });
 
@@ -148,4 +151,4 @@ function sortCards(item) {
 
 // function sortInBox() {
 
-// }
+// } 

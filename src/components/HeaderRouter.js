@@ -3,7 +3,7 @@ import '../App.css';
 import { Link } from "react-router-dom";
 import { AppContext } from "../addOns/AppProvider";
 function HeaderRouter() {
-    const { localStorageNum, setCurrent } = useContext(AppContext);
+    const { localStorageNum, setCurrent, current, weatherData } = useContext(AppContext);
     const [num, setNum] = useState(localStorageNum)
     const data = localStorage.getItem("weatherData")
     function exitAll() {
@@ -12,13 +12,15 @@ function HeaderRouter() {
         localStorage.getItem("userName") && localStorage.clear();
     }
     function returnMain() {
-        JSON.parse(data).length && setCurrent(JSON.parse(data)[JSON.parse(data).length - 1])
+        //console.log(JSON.parse(data).length)
+        //console.log(JSON.parse(data)[JSON.parse(data).length - 1])
 
+        JSON.parse(data).length && setCurrent(JSON.parse(data)[JSON.parse(data).length - 1])
     }
 
     return (
         <div className="HeaderRouter">
-            <Link to={"/Login"} className="links" onClick={returnMain}>ראשי</Link>
+            <Link to={"/login"} className="links" onClick={returnMain}>ראשי</Link>
 
             {localStorage.getItem("lastSearches") ? <Link to={"/History"} className="links">היסטוריה - {localStorage.getItem("lastSearches") ? JSON.parse(localStorage.getItem("lastSearches")).length : "0"}</Link>
                 :

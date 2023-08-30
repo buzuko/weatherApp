@@ -10,8 +10,8 @@ import dropDownIcon from "../../addOns/dropDownIcon.png"
 
 
 
-function MadorSoldiers({ changeClicked, a }) {
-    const { soldiersData, setSoldiersData, setSelected, selected, isChanged, setIsChanged, setIsSaved } = useContext(AppContext);
+function MadorSoldiers({ changeClicked, a, changeIsClosed }) {
+    const { soldiersData, setSoldiersData, setSelected, selected, isChanged, setIsChanged, setIsSaved, setIsPending, setNewSoldiersData } = useContext(AppContext);
 
     const [selectedOption, setSelectedOption] = useState({ name: "עיר", info: "City" });
     const [A, setA] = useState()
@@ -58,24 +58,35 @@ function MadorSoldiers({ changeClicked, a }) {
             } else {
                 newArray = [...soldiersData]
             }
+
             setSoldiersData(newArray)
+            //setIsSaved(false)
         });
         setSelected([])
     }
 
     // שומר את כל החיילים שעדיין בקומפוננטה
     async function save() {
+        setIsPending(true)
         try {
             const res = await axios.put(`http://localhost:3001/updateMadorSoldiers`, { newSoldiers: soldiersData }, {
                 headers: {
                     user_mispar_ishi: "8649932",
                     user_name: "Idan445"
                 }
+
             })
 
+            // console.log(soldiersData)
+            // console.log(res)
+            //setSoldiersData(res)
+
             setIsSaved(true)
+            setNewSoldiersData(soldiersData)
+            setIsPending(false)
             changeClicked()
         } catch (error) {
+            setIsPending(false)
             console.log(error)
             alert(error)
         }
@@ -88,7 +99,7 @@ function MadorSoldiers({ changeClicked, a }) {
                 <span className="orderBy">
                     :סדר לפי
                 </span>
-                <OrderSelect options={options} setSelectedOption={setSelectedOption} />
+                <OrderSelect options={options} setSelectedOption={setSelectedOption} changeIsClosed={changeIsClosed} />
                 {/* <img src={dropDownIcon} className="dropDownIcon" alt="dropDownIcon" /> */}
                 {/* <button>{selectedOrder}</button> */}
 

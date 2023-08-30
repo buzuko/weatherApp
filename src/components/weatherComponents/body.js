@@ -6,6 +6,7 @@ import { AppContext } from "../../addOns/AppProvider";
 function Body() {
     const { weatherData, city } = useContext(AppContext);
 
+
     const { logo, temp } = LogoIcon(weatherData, 0)
     const color = weatherColor(weatherData.daily[0])
     const colorRef = useRef(null);

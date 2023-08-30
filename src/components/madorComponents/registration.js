@@ -10,7 +10,7 @@ function Registration({ incrementCounter }) {
     const buttonRef = useRef(null)
     const usernameRegex = /^(?=.*[a-z])(?=.*[A-Z])(?!.*\d{4,})(?=^(?:\D*\d){0,3}\D*$)[a-zA-Z\d]*$/;
     const numRegex = /^[0-9]+$/;
-    const { soldiersData, setSoldiersData, setIsChanged } = useContext(AppContext);
+    const { soldiersData, setSoldiersData, setIsChanged, setIsSaved } = useContext(AppContext);
     const [soldier, setSoldier] = useState(null);
 
     //const [selectedOption, setSelectedOption] = useState({ name: "עיר", info: "City" });
@@ -50,6 +50,7 @@ function Registration({ incrementCounter }) {
 
         const newArray = [...soldiersData, soldier2]
         setSoldiersData(newArray)
+        setIsSaved(false)
         setIsChanged(true)
     }
     return (

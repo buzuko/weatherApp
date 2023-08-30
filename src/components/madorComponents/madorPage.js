@@ -5,7 +5,7 @@ import MadorSoldiers from "./madorSoldiers";
 import { AppContext } from "../../addOns/AppProvider";
 
 
-function MadorPage({ changeClicked }) {
+function MadorPage({ changeClicked, changeIsClosed }) {
     const { soldiersData, setSoldiersData } = useContext(AppContext);
 
     const [a, setA] = useState(0);
@@ -17,7 +17,7 @@ function MadorPage({ changeClicked }) {
         <div className="MadorPage">
             <MadorHeader changeClicked={changeClicked} />
             <Registration incrementCounter={incrementCounter} />
-            <MadorSoldiers a={a} changeClicked={changeClicked} />
+            <MadorSoldiers a={a} changeClicked={changeClicked} changeIsClosed={changeIsClosed} />
         </div>
     )
 }

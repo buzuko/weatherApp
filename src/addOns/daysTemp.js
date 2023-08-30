@@ -5,9 +5,10 @@ import rainbow from "./rainbow.png"
 
 // בדיקה: איזה לוגו צריך להיות ביום
 export function LogoIcon(data, num) {
+    //console.log(data)
     const tempEve = data.daily[num].temp.eve - 273.15
     const tempMax = data.daily[num].temp.max - 273.15
-    const temp = ((tempEve + tempMax) / 2).toFixed(2)
+    const temp = Math.round((tempEve + tempMax) / 2)
 
     let logo;
     if (data.daily[num].temp.day - 273.15 > 29) {
@@ -19,6 +20,7 @@ export function LogoIcon(data, num) {
     } else {
         logo = rainbow
     }
+
     return { temp, logo }
 }
 

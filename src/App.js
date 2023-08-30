@@ -30,7 +30,6 @@ function App() {
             <Route exact path="/History">
               <History />
             </Route>
-
           </Switch>
 
         </Router>

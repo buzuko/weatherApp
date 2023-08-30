@@ -7,18 +7,35 @@ import { AppContext } from "../addOns/AppProvider";
 export function useAllCities(URL, bool) {
     const [isPending2, setIsPending2] = useState(true)
     const [data, setData] = useState(null)
-    const { current, setWeatherData, setIsPending, setCity, setError, setLocalStorageNum } = useContext(AppContext);
-    const stored = localStorage.getItem("weatherData")
-    useEffect(() => {
-        console.log(current)
-        if (bool && current) {
-            console.log(current)
-            setWeatherData(current)
-            setData(current)
-            setIsPending2(false)
-            setIsPending(false)
-        } else {
+    const { current, setCurrent, setWeatherData, setIsPending, setCity, setError, setLocalStorageNum } = useContext(AppContext);
+    const stored = JSON.parse(localStorage.getItem("weatherData"))
 
+    //stored && setCurrent(current)
+    // useEffect(() => {
+    //     stored && setCurrent(stored[stored.length - 1])
+    // }, [])
+    console.log("1")
+    // console.log(current)
+    // console.log(stored[stored.length - 1])
+    useEffect(() => {
+        // console.log("1")
+        // console.log(current)
+        // if (!bool && current) {
+        //stored && setCurrent(stored[stored.length - 1])
+        // console.log("2")
+        // console.log(stored[stored.length - 1])
+        console.log("2")
+        if (current) {
+            console.log("3")
+            console.log(current)
+            // console.log(stored)
+            setWeatherData(current)
+            setCity(JSON.parse(localStorage.getItem("lastSearches"))[JSON.parse(localStorage.getItem("lastSearches")).length - 1].city)
+            setData(JSON.parse(localStorage.getItem("allCountry")))
+            setIsPending2(false)
+            //setIsPending(false)
+        } else {
+            console.log("here")
             bool ? setIsPending(true) : setIsPending2(true)
             const timerId = setTimeout(async () => {
 
@@ -32,8 +49,9 @@ export function useAllCities(URL, bool) {
                     !bool && localStorage.setItem("allCountry", JSON.stringify(res.data))
                     setData(res.data);
                     bool && setCity(URL.split("/")[1])
-
+                    bool ? setIsPending(false) : setIsPending2(false)
                     if (bool) {
+                        setIsPending(true)
                         async function fetchData() {
                             try {
                                 const res2 = await axios(`https://api.openweathermap.org/data/2.5/onecall?lat=${res.data.latitude}&lon=${res.data.longitude}&appid=6f11fa9760902e1597265ad205f05d2c`);
@@ -45,6 +63,7 @@ export function useAllCities(URL, bool) {
                                 setIsPending(false)
                             } catch (error) {
                                 setError(error.message);
+                                setIsPending(false)
                             }
                         }
                         fetchData();
@@ -58,8 +77,11 @@ export function useAllCities(URL, bool) {
                 clearTimeout(timerId);
             }
         }
+        bool && setIsPending(false)
     }, [URL]);
-    return { data };
+    // console.log("1")
+    // console.log(data)
+    return { data, isPending2 };
 
 }
 

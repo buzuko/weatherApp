@@ -4,7 +4,7 @@ import { AppContext } from "../addOns/AppProvider";
 
 
 // מביא את המידע מהסרבר
-export function useAllCities(URL, bool) {
+export function useAllCities(URL, bool, showPopup) {
     const [isPending2, setIsPending2] = useState(true)
     const [data, setData] = useState(null)
     const { setWeatherData, setIsPending, setCity, setError } = useContext(AppContext);
@@ -13,6 +13,7 @@ export function useAllCities(URL, bool) {
         bool ? setIsPending(true) : setIsPending2(true)
         const timerId = setTimeout(async () => {
 
+
             try {
                 const res = await axios(`http://localhost:3001/${URL}`, {
                     headers: {
@@ -20,6 +21,7 @@ export function useAllCities(URL, bool) {
                         user_name: localStorage.getItem("userName"),
                     }
                 })
+
                 setData(res.data);
                 bool && setCity(URL.split("/")[1])
                 setIsPending2(false)
@@ -47,7 +49,7 @@ export function useAllCities(URL, bool) {
             clearTimeout(timerId);
         }
 
-    }, [URL]);
+    }, [URL, showPopup]);
     return { data, isPending2 };
 }
 

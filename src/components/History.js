@@ -11,7 +11,7 @@ function History() {
 
 
     return (
-        <div className="TableExample">
+        <div className="history">
             <TablePart />
             <table>
                 <thead>
@@ -19,7 +19,7 @@ function History() {
                         <th>פעולות</th>
                         <th>יבשת</th>
                         <th>מדינה</th>
-                        <th>עיר</th>
+                        <th className="city">עיר</th>
                     </tr>
 
                 </thead>

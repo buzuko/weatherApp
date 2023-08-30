@@ -5,6 +5,7 @@ import { LogoIcon, weatherColor } from "../../addOns/daysTemp";
 
 function Day({ time, num }) {
     const { weatherData } = useContext(AppContext);
+
     const { logo, temp } = LogoIcon(weatherData, num)
     const color = weatherColor(weatherData.daily[num])
     const colorRef = useRef(null);
