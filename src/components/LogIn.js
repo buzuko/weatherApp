@@ -69,7 +69,7 @@ function LogIn() {
 
     return (
         <div className="LogIn">
-            {error && <h1 className="noUser">אין לך משתמש יא אפס</h1>}
+            {error && <h1 className="noUser">משתמש לא נכון יא אפס</h1>}
             {!isPending ?
                 <form onSubmit={handleSubmit}>
                     <label for="user">:שם משתמש</label>

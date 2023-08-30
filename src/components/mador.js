@@ -16,7 +16,6 @@ function Mador() {
     const [isClosed, setIsClosed] = useState(true)
     const popRef = useRef(null)
     setIsPending(false)
-    console.log(isClosed)
 
     // סוגר את הפופאפ
     const handleButtonClick = () => {

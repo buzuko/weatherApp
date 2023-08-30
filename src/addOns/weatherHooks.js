@@ -16,7 +16,6 @@ export function useAllCities(URL, bool) {
             setData(JSON.parse(localStorage.getItem("allCountry")))
             setIsPending2(false)
         } else {
-            console.log("here")
             bool ? setIsPending(true) : setIsPending2(true)
             const timerId = setTimeout(async () => {
 
