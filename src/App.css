@@ -103,12 +103,31 @@ td {
   color: rgb(240, 118, 139);
 }
 
+.opptions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
 .tableLink {
   font-size: 15px;
   text-decoration: none;
   background: none;
   border: none;
   color: black;
+  align-items: center;
+}
+
+.mainLink {
+  font-size: 15px;
+  text-decoration: none;
+  background: none;
+  border: none;
+  color: black;
+  align-items: center;
+  margin-right: 45px;
 }
 
 th {

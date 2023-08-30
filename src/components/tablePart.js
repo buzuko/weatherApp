@@ -48,7 +48,7 @@ function TablePart({ num, setA }) {
             <tr>
                 <td className="opptions">
                     <button onClick={deleteLast} >מחיקה מההיסטוריה</button> {" | "}
-                    {JSON.parse(data).length === num + 1 ? <button >ביטול בחירה</button> : <Link to={'/WeatherPage'} onClick={makeFirst} className="tableLink">הפוך לראשי</Link>}
+                    {JSON.parse(data).length === num + 1 ? <p className="mainLink"> ראשי </p> : <Link to={'/WeatherPage'} onClick={makeFirst} className="tableLink"> הפוך לראשי </Link>}
                 </td>
                 <td>{continent}</td>
                 <td>{country}</td>
