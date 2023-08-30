@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import Popup from 'reactjs-popup'
 import dropDownIcon from "../../addOns/dropDownIcon.png"
 
@@ -31,19 +31,12 @@ function CustomDropdown({ options, setSelectedOption, changeIsClosed }) {
 
     };
 
-    // useEffect(() => {
-    //     console.log(allRefs)
-    //     if (allRefs[index2].current) {
-    //         allRefs[index2].current.style.background = 'blue';
-    //     }
-    // }, [index2])
 
     // מדגיש את האופציה שהעכבר מעליה
     function handleOptionHover(index) {
         if (allRefs[index].current && index !== index2) {
             allRefs[index].current.style.fontWeight = 'bold';
             allRefs[index].current.style.background = '#e4e4e4';
-            //allRefs[index].current.style.color = '#000';
         }
     }
     // לא מדגיש את האופציה שהעכבר מעליה
@@ -54,14 +47,6 @@ function CustomDropdown({ options, setSelectedOption, changeIsClosed }) {
             allRefs[index].current.style.color = '#525252';
         }
     }
-    function changeClicked() {
-        // setSelectedOption(null)
-        // setSelectedOption2(null)
-        // setIndex2(0)
-    }
-    function triggerd() {
-    }
-
     return (
         <Popup key={2} className='2ndPopup'
             trigger={<button className="dropdown-button"> <div className="dropdownContent" >
@@ -87,7 +72,6 @@ function CustomDropdown({ options, setSelectedOption, changeIsClosed }) {
                     >
                         {option.name}
 
-                        {/* {index !== 4 && <div className='Separator'></div>} */}
                     </div>
 
                 ))}

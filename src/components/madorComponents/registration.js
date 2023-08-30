@@ -1,8 +1,7 @@
 import { React, useState, useRef, useEffect, useContext } from "react";
 import { AppContext } from "../../addOns/AppProvider";
-import sort from "../../addOns/sertingCards";
 
-function Registration({ incrementCounter }) {
+function Registration() {
     const [firstName, setFirstName] = useState('');
     const [num, setNum] = useState('');
     const [userName, setUserName] = useState('');
@@ -11,13 +10,6 @@ function Registration({ incrementCounter }) {
     const usernameRegex = /^(?=.*[a-z])(?=.*[A-Z])(?!.*\d{4,})(?=^(?:\D*\d){0,3}\D*$)[a-zA-Z\d]*$/;
     const numRegex = /^[0-9]+$/;
     const { soldiersData, setSoldiersData, setIsChanged, setIsSaved } = useContext(AppContext);
-    const [soldier, setSoldier] = useState(null);
-
-    //const [selectedOption, setSelectedOption] = useState({ name: "עיר", info: "City" });
-    //const cards = sort(selectedOption)
-
-    //console.log(a)
-
 
     useEffect(() => {
         if (usernameRegex.test(userName) && firstName.length && numRegex.test(num) && num.length === 7) {
@@ -31,6 +23,7 @@ function Registration({ incrementCounter }) {
 
     }, [firstName, num, userName])
 
+    // מעדכן את רשימת המשתמשים
     function handleSubmit(e) {
         e.preventDefault();
         const name = firstName.split(' ', 2);
@@ -53,6 +46,7 @@ function Registration({ incrementCounter }) {
         setIsSaved(false)
         setIsChanged(true)
     }
+
     return (
         <div className="Registration">
             <form className="form" onSubmit={handleSubmit}>
@@ -102,7 +96,6 @@ function Registration({ incrementCounter }) {
                 </span></button>
 
             </form>
-            {/* <button onClick={try}></button> */}
         </div >
     )
 }

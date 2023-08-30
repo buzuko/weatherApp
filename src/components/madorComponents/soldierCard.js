@@ -11,9 +11,9 @@ function SoldierCard({ key, item }) {
     const divRef = useRef(null)
     const [checked, setChecked] = useState(false)
     let newArray = selected ? [...selected] : []
-    useEffect(() => {
 
-        //setSelected([...soldiersData])
+    // מעדכן אם הכרטיס נבחר
+    useEffect(() => {
         if (selected && selected.includes(item)) {
             setChecked(true)
         }
@@ -23,21 +23,17 @@ function SoldierCard({ key, item }) {
 
     }, [selected])
 
+    // בוחר את הכרטיס
     function handleChange() {
         setChecked(!checked)
 
-
-
         if (checked) {
-            //newArray = selected.filter(info => info !== item);
             newArray = selected.filter(info => info !== item);
         } else {
-            //newArray = [...selected]
             newArray.push(item)
 
         }
         setSelected(newArray)
-        //console.log(selected)
     }
 
     return (

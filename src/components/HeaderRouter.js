@@ -1,4 +1,4 @@
-import { React, useEffect, useContext, useState } from "react";
+import { React, useContext, useState } from "react";
 import '../App.css';
 import { Link } from "react-router-dom";
 import { AppContext } from "../addOns/AppProvider";
@@ -6,15 +6,13 @@ function HeaderRouter() {
     const { localStorageNum, setCurrent, current, weatherData } = useContext(AppContext);
     const [num, setNum] = useState(localStorageNum)
     const data = localStorage.getItem("weatherData")
+
     function exitAll() {
         setNum(item => item + 1)
         localStorage.getItem("lastSearches") && localStorage.setItem("lastSearches", [])
         localStorage.getItem("userName") && localStorage.clear();
     }
     function returnMain() {
-        //console.log(JSON.parse(data).length)
-        //console.log(JSON.parse(data)[JSON.parse(data).length - 1])
-
         JSON.parse(data).length && setCurrent(JSON.parse(data)[JSON.parse(data).length - 1])
     }
 

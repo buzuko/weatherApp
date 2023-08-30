@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import '../Weather.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -7,15 +7,13 @@ import { useAllCities } from "../../addOns/weatherHooks";
 
 function Header(info) {
     const info2 = localStorage.getItem("lastSearches")
-    // console.log("2")
-    // console.log(info)
+
     const [selected, setSelected] = useState(info2 ? JSON.parse(info2).length ? JSON.parse(info2)[JSON.parse(info2).length - 1].city : "Jerusalem" : "Jerusalem");
     const [buttonSelect, setButtonSelect] = useState(info2 ? JSON.parse(info2).length ? JSON.parse(info2)[JSON.parse(info2).length - 1].city : "Jerusalem" : "Jerusalem");
     const { data, isPending, setCurrent } = useContext(AppContext);
-
     const { } = useAllCities(`cities/${buttonSelect}`, true) //  כשזה טוען המסך עדיין מציג את הכל
+
     setCurrent(null)
-    //console.log(info)
     const cityOptions = info.info.map((res, index) => (
         <option key={index} value={res.city}>
             {res.city}

@@ -1,15 +1,12 @@
-import React, { useState, useContext } from "react";
-//import { Bar } from 'react-chartjs-2';
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import '../App.css';
-//import 'chart.js/auto';
 import { AppContext } from "../addOns/AppProvider";
 
 
 function TablePart({ num, setA }) {
     const data = localStorage.getItem("lastSearches")
     const data2 = localStorage.getItem("weatherData")
-
     const { setLocalStorageNum, setCurrent } = useContext(AppContext);
 
     if (data && JSON.parse(data)[num]) {
@@ -17,6 +14,7 @@ function TablePart({ num, setA }) {
         const country = JSON.parse(data)[num].country
         const continent = JSON.parse(data)[num].continent
 
+        // מוחק את העיר הנבחרת מהמערך
         function deleteLast() {
             const JSONData = JSON.parse(data);
             const JSONData2 = JSON.parse(data2);
@@ -29,6 +27,8 @@ function TablePart({ num, setA }) {
             setA(d => d + 1)
             setLocalStorageNum(a => a + 1)
         }
+
+        // מעדכן את המערך כך שהעיר הנבחרת תהיה ראשונה
         function makeFirst() {
             const storedArrayString = JSON.parse(data);
             const storedArrayString2 = JSON.parse(data2);
@@ -41,7 +41,6 @@ function TablePart({ num, setA }) {
 
             localStorage.setItem('lastSearches', JSON.stringify(storedArrayString));
             localStorage.setItem('weatherData', JSON.stringify(storedArrayString2));
-
         }
 
         return (

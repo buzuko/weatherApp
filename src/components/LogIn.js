@@ -2,17 +2,19 @@ import { React, useState, useEffect, useContext } from "react";
 import axios from "axios"
 import { useHistory } from "react-router-dom";
 import { AppContext } from "../addOns/AppProvider";
-//import WeatherPage from "./WeatherPage";
 
 function LogIn() {
     const history = useHistory();
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [isPending, setIsPending] = useState(true)
+    const [error, setError] = useState("")
+
 
     const usernameRegex = /^(?=.*[a-z])(?=.*[A-Z])(?!.*\d{4,})(?=^(?:\D*\d){0,3}\D*$)[a-zA-Z\d]*$/;
     const { data, setData } = useContext(AppContext);
 
+    // וולידצית משתמש
     function handleSubmit(e) {
         e.preventDefault();
         if (usernameRegex.test(userName)) {
@@ -34,6 +36,7 @@ function LogIn() {
             localStorage.setItem('lastSearches', lastSearches);
             localStorage.setItem('weatherData', lastSearches);
         }
+
     }, []) // לבדוק אם צריך לנקות
 
     // בדיקה האם המשתמש שהוזן נכון
@@ -54,16 +57,19 @@ function LogIn() {
 
             history.push("/WeatherPage");
 
-        } catch (error) {
+        } catch (err) {
             setIsPending(false)
-            alert("password is incorrect!") // באג: האלרט לא נסגר לפני שפנדיג מתעדכן
+            setError(err)
+            setTimeout(() => {
+                setError("")
+            }, 2000);
         }
-
 
     }
 
     return (
         <div className="LogIn">
+            {error && <h1 className="noUser">אין לך משתמש יא אפס</h1>}
             {!isPending ?
                 <form onSubmit={handleSubmit}>
                     <label for="user">:שם משתמש</label>

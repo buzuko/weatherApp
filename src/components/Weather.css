@@ -1,17 +1,13 @@
-/* לתקן - שהעמוד יתאים את עצמו לגודל המסך (כשעושים זום) */
-
-
-
-
 /* weatherPage component */
 
 .WeatherPage {
+    position: relative;
     min-height: 95vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
+    font-size: 30px;
     color: rgb(0, 0, 0);
     position: relative;
     background-image: url("../addOns/cloudIMJ.jpg");
@@ -20,20 +16,11 @@
 
 }
 
-
-/* .WeatherPage {
-
-    width: 100%;
-    height: 500px;
-    Set the height as needed
-} */
-
 .todayData {
     text-align: right;
 }
 
 /* end of weatherPage cmponent */
-
 
 
 /* header component */
@@ -43,14 +30,11 @@
     top: 0%;
     font-size: 20px;
     align-items: center;
-
 }
-
 
 .header-select {
     font-size: 15px;
     padding: 10px;
-    /* border: 10px solid #ccc; */
     border-radius: 60x;
     width: 200px;
 }
@@ -68,22 +52,28 @@
 
 /* days cmponent */
 
+.container {
+    position: relative;
+}
+
+.box {
+    position: relative;
+}
+
 .Days {
     position: absolute;
-    bottom: calc(7.5% + 25px);
-    bottom: 7.5%;
-    height: 25%;
     display: flex;
     gap: 30px;
     z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row-reverse
+    flex-direction: row-reverse;
+    top: 530px;
+    right: 118px;
 }
 
 .Day {
-    /* padding: 5px; */
     width: 220px;
     background: rgba(255, 255, 255, 0.1);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
@@ -92,7 +82,6 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-
 }
 
 .dayLogo {
@@ -100,17 +89,13 @@
     justify-content: center;
     height: 70px;
     width: 70px;
-
 }
-
 
 .Days h5,
 .Days p {
+    font-size: 25px;
     margin: 20px 0;
-
 }
-
-
 
 /* end of days cmponent */
 
@@ -126,7 +111,6 @@
     height: 550px;
     margin-top: 80px;
     position: relative;
-
 }
 
 .sun_no_background {
@@ -135,7 +119,6 @@
     left: 15%;
     transform: translateY(-50%);
     width: 20%;
-    /* height: auto */
 }
 
 .todayData {
@@ -144,7 +127,6 @@
     right: 25%;
     transform: translateY(-50%);
     width: 50%;
-
 }
 
 .todayData h5,

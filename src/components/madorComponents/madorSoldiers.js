@@ -1,16 +1,11 @@
 import { React, useContext, useEffect, useRef, useState } from "react";
 import { AppContext } from "../../addOns/AppProvider";
-import SoldierCard from "./soldierCard";
 import sort from "../../addOns/sertingCards";
 import axios from "axios";
 import OrderSelect from "./orderSelect";
-import dropDownIcon from "../../addOns/dropDownIcon.png"
 
 
-
-
-
-function MadorSoldiers({ changeClicked, a, changeIsClosed }) {
+function MadorSoldiers({ changeClicked, changeIsClosed }) {
     const { soldiersData, setSoldiersData, setSelected, selected, isChanged, setIsChanged, setIsSaved, setIsPending, setNewSoldiersData } = useContext(AppContext);
 
     const [selectedOption, setSelectedOption] = useState({ name: "עיר", info: "City" });
@@ -60,7 +55,6 @@ function MadorSoldiers({ changeClicked, a, changeIsClosed }) {
             }
 
             setSoldiersData(newArray)
-            //setIsSaved(false)
         });
         setSelected([])
     }
@@ -76,11 +70,6 @@ function MadorSoldiers({ changeClicked, a, changeIsClosed }) {
                 }
 
             })
-
-            // console.log(soldiersData)
-            // console.log(res)
-            //setSoldiersData(res)
-
             setIsSaved(true)
             setNewSoldiersData(soldiersData)
             setIsPending(false)
@@ -100,27 +89,6 @@ function MadorSoldiers({ changeClicked, a, changeIsClosed }) {
                     :סדר לפי
                 </span>
                 <OrderSelect options={options} setSelectedOption={setSelectedOption} changeIsClosed={changeIsClosed} />
-                {/* <img src={dropDownIcon} className="dropDownIcon" alt="dropDownIcon" /> */}
-                {/* <button>{selectedOrder}</button> */}
-
-                {/* <select className="MadorSoldiers-options" onChange={(e) => {
-                    const selected = JSON.parse(e.target.value);
-                    setSelectedOption(selected);
-                }}>
-                    <option key={1} value={JSON.stringify({ name: "עיר", info: "City" })} >
-                        עיר
-                    </option>
-
-                    <option key={2} value={JSON.stringify({ name: "מיקום עיר בארץ", info: "City_Location" })} >
-                        מיקום עיר בארץ
-                    </option>
-                    <option key={3} value={JSON.stringify({ name: "מין", info: "Gender" })} >
-                        מין
-                    </option>
-                    <option key={4} value={JSON.stringify({ name: "תפקיד + דרגה", info: ["Role", "Rank"] })} >
-                        תפקיד + דרגה
-                    </option>
-                </select> */}
             </div>
             <div className="selectCard">
                 {cards}

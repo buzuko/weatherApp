@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Header from "./weatherComponents/Header";
 import './Weather.css';
 import Body from "./weatherComponents/body";
@@ -20,12 +20,13 @@ function WeatherPage(props) {
                         <>
                             <Header
                                 info={data}
-                            // current={receivedData}
                             />
                             {!isPending ?
                                 <>
-                                    <Body />
-                                    <Days />
+                                    <div className="container">
+                                        <Body />
+                                        <Days />
+                                    </div>
                                     <h1></h1>
                                 </>
                                 :

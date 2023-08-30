@@ -27,6 +27,12 @@
 .LogIn button {
   font-size: 50px;
   border-radius: 8px;
+  opacity: 1;
+  transition: opacity 5s ease-in-out;
+}
+
+.noUser {
+  position: absolute;
 }
 
 .log {
@@ -104,7 +110,6 @@ td {
   border: none;
   color: black;
 }
-
 
 th {
   background-color: #f2f2f2;

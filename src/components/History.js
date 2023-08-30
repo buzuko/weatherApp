@@ -1,12 +1,8 @@
 import { React, useContext, useState } from "react";
-//import { Bar } from 'react-chartjs-2';
 import '../App.css';
-//import 'chart.js/auto';
 import TablePart from "./tablePart";
-import { AppContext } from "../addOns/AppProvider";
 
 function History() {
-    const { data } = useContext(AppContext);
     const [a, setA] = useState(0)
 
 

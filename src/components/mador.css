@@ -14,12 +14,6 @@
     border-radius: 10px;
 }
 
-/* 
-.popUpPage {
-    width: 100%;
-    height: 100%;
-} */
-
 /* end of Mador component */
 
 
@@ -38,7 +32,6 @@
 
 
 /* MadorHeader component */
-.MadorHeader {}
 
 .exit {
     border-radius: 15px;
@@ -47,8 +40,6 @@
     padding: 4px;
     object-fit: contain;
 }
-
-
 
 .Rectangle {
     display: flex;
@@ -74,7 +65,6 @@
 .iconsChange {
     width: 25px;
     height: 25px;
-    /* padding: 2px 3px 1px 2px; */
     align-items: center;
     align-items: center;
     justify-content: right;
@@ -213,7 +203,6 @@
     text-align: right;
     border: none;
     outline: none;
-    /* appearance: none; */
 }
 
 .selection option:hover {
@@ -289,15 +278,12 @@ hr {
     text-overflow: ellipsis;
 
     cursor: pointer;
-    /* Change cursor to indicate it's clickable */
     transition: background-color 0.3s ease;
 
 }
 
 .SoldierCard.selected {
-    /* Additional styles for the selected state */
     background-color: #b8b5aa;
-    /* Change background color when selected */
 }
 
 .SoldierCard input {
@@ -306,7 +292,6 @@ hr {
     top: 27px;
 }
 
-.checkBox {}
 
 .sortedCardsData {
     display: inline-flex;
@@ -314,45 +299,13 @@ hr {
     flex-direction: row-reverse;
 }
 
-
-.selectCard {
-    /* display: flex; */
-
-}
-
 .selectCard h1 {
-    /* width: 50px;
-    height: 21px; */
-    /* margin: 0 0 0 6px; */
     margin-top: 10px;
     font-family: Heebo;
     font-size: 14px;
     font-weight: bold;
-    /* font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: right; */
-
     color: #595a7f;
-
-
 }
-
-.selectCard div {
-    /* justify-content: center;
-    align-items: center; */
-}
-
-/* 
-.SoldierCard-imeges {
-    position: relative;
-    top: 8px;
-    width: 30px;
-    height: 30px;
-    border-radius: 100px;
-    background-color: #ffffff;
-} */
 
 .genderLogo {
     position: relative;
@@ -391,12 +344,8 @@ hr {
     font-family: Heebo;
     text-align: right;
     overflow: hidden;
-    /* Hide the overflowing content */
     white-space: nowrap;
-    /* Prevent text from wrapping */
     text-overflow: ellipsis;
-
-
 }
 
 .SoldierCard-name .text-style-1 {
@@ -404,8 +353,6 @@ hr {
 }
 
 .SoldierCard-title {
-
-    /* margin: 12px 0.6px 1px 32.4px; */
     margin-top: 5px;
     font-size: 10px;
     font-weight: bold;
@@ -425,20 +372,14 @@ hr {
 
 /* end of SoldierCard component */
 
+/*orderBy Popup css*/
+
 .dropdown-button {
-    /* padding: 10px; */
     border: none;
     display: flex;
-    /* border-radius: 5px; */
-    /* border: 1px solid #ccc; */
-    /* margin-bottom: 13px; */
     background-color: transparent;
     cursor: pointer;
     outline: none;
-    /* font-weight: ; */
-    /* margin: 0 29px 0 0; */
-    /* margin-top: 1px; */
-    /* margin-bottom: 10px; */
     right: 80px;
     bottom: 359px;
     font-family: Heebo;
@@ -452,7 +393,6 @@ hr {
 .dropdown-content {
     display: flex;
     border-radius: 6px;
-    /* -webkit-backdrop-filter: blur(16px); */
     backdrop-filter: blur(16px);
     box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.15);
     border: 1px #f5f5f6;
@@ -470,25 +410,15 @@ hr {
 .dropdown-option {
     display: block;
     font-size: 11px;
-    /* border-bottom: none; */
     padding: 5px;
     cursor: pointer;
-    /* color: "#86878c"; */
-    /* transition: background-color 0.2s; */
     width: 140px;
     height: 25px;
     color: #525252;
-    /* Set the width to 100% */
     box-sizing: border-box;
     text-align: right;
     transition: background-color 0.5s;
-    /* background-color: #e4e4e4; */
-    /* align-items: center;
-    justify-content: center; */
-    /* text-align: center; */
     border-bottom: 0.5px solid #ccc;
-
-
 }
 
 .dropdown-option.selected {
@@ -496,9 +426,7 @@ hr {
 }
 
 .Separator {
-
     border-bottom: none;
-    /* Remove the border-bottom from the last option */
     width: 143px;
     height: 1px;
     margin: 28px 0 0;
@@ -519,16 +447,15 @@ hr {
     height: 20px;
     margin-right: 8px;
     margin-top: 3px;
-    /* Add spacing between icon and text */
 }
 
 .dropdownText {
     position: relative;
-    /* margin-bottom: 10px; */
 }
 
 .dropdownContent {
     display: flex;
     align-items: center;
-    /* Vertically align items */
 }
+
+/*end of orderBy Popup css*/

@@ -7,10 +7,11 @@ import { AppContext } from "../addOns/AppProvider";
 export function useAllCities(URL, bool, showPopup) {
     const [isPending2, setIsPending2] = useState(true)
     const [data, setData] = useState(null)
-    const { setWeatherData, setIsPending, setCity, setError } = useContext(AppContext);
+    const { setError } = useContext(AppContext);
 
     useEffect(() => {
-        bool ? setIsPending(true) : setIsPending2(true)
+        // bool ? setIsPending(true) : setIsPending2(true)
+        setIsPending2(true)
         const timerId = setTimeout(async () => {
 
 
@@ -23,26 +24,27 @@ export function useAllCities(URL, bool, showPopup) {
                 })
 
                 setData(res.data);
-                bool && setCity(URL.split("/")[1])
+                //bool && setCity(URL.split("/")[1])
                 setIsPending2(false)
-                if (bool) {
-                    async function fetchData() {
-                        try {
-                            const res2 = await axios(`https://api.openweathermap.org/data/2.5/onecall?lat=${res.data.latitude}&lon=${res.data.longitude}&appid=6f11fa9760902e1597265ad205f05d2c`);
-                            setWeatherData(res2.data)
-                            varifySearched(res2.data)
-                            setIsPending(false)
-                        } catch (error) {
-                            setIsPending(false)
-                            setError(error.message);
-                        }
-                    }
+                // if (bool) {
+                //     async function fetchData() {
+                //         try {
+                //             const res2 = await axios(`https://api.openweathermap.org/data/2.5/onecall?lat=${res.data.latitude}&lon=${res.data.longitude}&appid=6f11fa9760902e1597265ad205f05d2c`);
+                //             setWeatherData(res2.data)
+                //             varifySearched(res2.data)
+                //             setIsPending(false)
+                //         } catch (error) {
+                //             setIsPending(false)
+                //             setError(error.message);
+                //         }
+                //     }
 
-                    fetchData();
-                }
+                //     fetchData();
+                // }
             } catch (error) {
                 setError(error.message);
-                bool ? setIsPending(false) : setIsPending2(false)
+                //bool ? setIsPending(false) : setIsPending2(false)
+                setIsPending2(false)
             }
         }, 1000);
         return () => {

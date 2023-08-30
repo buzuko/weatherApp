@@ -7,33 +7,14 @@ import { AppContext } from "../addOns/AppProvider";
 export function useAllCities(URL, bool) {
     const [isPending2, setIsPending2] = useState(true)
     const [data, setData] = useState(null)
-    const { current, setCurrent, setWeatherData, setIsPending, setCity, setError, setLocalStorageNum } = useContext(AppContext);
-    const stored = JSON.parse(localStorage.getItem("weatherData"))
+    const { current, setWeatherData, setIsPending, setCity, setError, setLocalStorageNum } = useContext(AppContext);
 
-    //stored && setCurrent(current)
-    // useEffect(() => {
-    //     stored && setCurrent(stored[stored.length - 1])
-    // }, [])
-    console.log("1")
-    // console.log(current)
-    // console.log(stored[stored.length - 1])
     useEffect(() => {
-        // console.log("1")
-        // console.log(current)
-        // if (!bool && current) {
-        //stored && setCurrent(stored[stored.length - 1])
-        // console.log("2")
-        // console.log(stored[stored.length - 1])
-        console.log("2")
         if (current) {
-            console.log("3")
-            console.log(current)
-            // console.log(stored)
             setWeatherData(current)
             setCity(JSON.parse(localStorage.getItem("lastSearches"))[JSON.parse(localStorage.getItem("lastSearches")).length - 1].city)
             setData(JSON.parse(localStorage.getItem("allCountry")))
             setIsPending2(false)
-            //setIsPending(false)
         } else {
             console.log("here")
             bool ? setIsPending(true) : setIsPending2(true)
@@ -50,6 +31,8 @@ export function useAllCities(URL, bool) {
                     setData(res.data);
                     bool && setCity(URL.split("/")[1])
                     bool ? setIsPending(false) : setIsPending2(false)
+
+                    // מביא את הנתונים של העיר לפי לט ולונג
                     if (bool) {
                         setIsPending(true)
                         async function fetchData() {
@@ -79,8 +62,6 @@ export function useAllCities(URL, bool) {
         }
         bool && setIsPending(false)
     }, [URL]);
-    // console.log("1")
-    // console.log(data)
     return { data, isPending2 };
 
 }
