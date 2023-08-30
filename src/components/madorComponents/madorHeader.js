@@ -6,8 +6,6 @@ import { AppContext } from "../../addOns/AppProvider";
 
 function MadorHeader({ changeClicked }) {
     const [currentTime, setCurrentTime,] = useState(new Date());
-    const { setSoldiersData, newSoldiersData } = useContext(AppContext);
-
 
     // מעדכן את התאריך כל שניה
     useEffect(() => {
@@ -24,7 +22,6 @@ function MadorHeader({ changeClicked }) {
     const seconds = currentTime.getSeconds();
 
     function clicked() {
-        setSoldiersData(newSoldiersData)
         changeClicked()
     }
 

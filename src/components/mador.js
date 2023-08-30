@@ -8,7 +8,7 @@ import Popup from 'reactjs-popup'
 
 
 function Mador() {
-    const { error, soldiersData, setSoldiersData, setIsChanged, setSelected, isSaved, isPending, setIsPending, setNewSoldiersData } = useContext(AppContext);
+    const { error, soldiersData, setSoldiersData, setIsChanged, setSelected, isSaved, isPending, setIsPending, setNewSoldiersData, newSoldiersData } = useContext(AppContext);
     const [isClick, setIsClick] = useState(false)
 
     const [showPopup, setShowPopup] = useState(false);
@@ -29,6 +29,7 @@ function Mador() {
     };
 
     function changeIsClosed() {
+        setSoldiersData(newSoldiersData)
         setIsClosed(!isClosed)
     }
 
@@ -42,6 +43,8 @@ function Mador() {
         setIsChanged(false)
         setSelected([])
         setShowPopup(false)
+        console.log(soldiersData)
+        console.log(newSoldiersData)
     }
 
     return (

@@ -19,6 +19,7 @@ function CustomDropdown({ options, setSelectedOption, changeIsClosed }) {
             allRefs[3].current.style.background = 'blue';
         }
     }
+
     // מעדכן איזה אופציה נבחר
     function handleOptionSelect(option, index) {
         setIndex2(index)
