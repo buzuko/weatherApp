@@ -43,8 +43,6 @@ function Mador() {
         setIsChanged(false)
         setSelected([])
         setShowPopup(false)
-        console.log(soldiersData)
-        console.log(newSoldiersData)
     }
 
     return (
