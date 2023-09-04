@@ -21,14 +21,15 @@ function HeaderRouter() {
 
     return (
         <div className="HeaderRouter">
-            <Link to={"/login"} className="links" onClick={returnMain}>ראשי</Link>
-            <Link to={"/mador"} className="links" >מדור</Link>
-            {localStorage.getItem("lastSearches") ? <Link to={"/History"} className="links">היסטוריה - {localStorage.getItem("lastSearches") ? JSON.parse(localStorage.getItem("lastSearches")).length : "0"}</Link>
-                :
-                <p className="links">היסטוריה - 0</p>
+            {localStorage.getItem("userName") && <> <Link to={"/login"} className="links" onClick={returnMain}>ראשי</Link>
+                <Link to={"/mador"} className="links" >מדור</Link>
+                {localStorage.getItem("lastSearches") ? <Link to={"/History"} className="links">היסטוריה - {localStorage.getItem("lastSearches") ? JSON.parse(localStorage.getItem("lastSearches")).length : "0"}</Link>
+                    :
+                    <p className="links">היסטוריה - 0</p>
+                }
+                <Link to={"/Login"} className="HeaderRouterExit" onClick={exitAll} >התנתקות</Link>
+            </>
             }
-            <Link to={"/Login"} className="HeaderRouterExit" onClick={exitAll} >התנתקות</Link>
-
 
         </div>
     )
