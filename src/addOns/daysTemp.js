@@ -6,7 +6,7 @@ import rainbow from "./rainbow.png"
 // בדיקה: איזה לוגו צריך להיות ביום
 export function LogoIcon(data, num) {
     const tempEve = data.daily[num].temp.eve - 273.15
-    const tempMax = data.daily[num].temp.max - 273.15
+    const tempMax = data.daily[num].temp.max - 273.15 // to function
     const temp = Math.round((tempEve + tempMax) / 2)
 
     let logo;
@@ -18,7 +18,7 @@ export function LogoIcon(data, num) {
         logo = rain_s_cloudy
     } else {
         logo = rainbow
-    }
+    } // switch case
 
     return { temp, logo }
 }

@@ -31,6 +31,10 @@ function WeatherPage(props) {
                                 </>
                                 :
                                 <h1>Loading...</h1>
+                                // /home
+                                //עברית
+                                //loadin on relevant parts
+                                
                             }
                         </>
                     ) : <h1>Loading...</h1>}

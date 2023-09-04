@@ -22,7 +22,7 @@ function Body() {
             <div className="todayData">
                 <h5>היום</h5>
                 <h2>{city}</h2>
-                <p>{"טמפרטורה" + ": " + temp + "\u00B0"}</p>
+                <div style={{direction: 'ltr'}}><a> {`טמפרטורה: ℃`}</a> <>{temp}</> </div>
                 <p>{weatherData.daily[0].weather[0].description}</p>
 
             </div>

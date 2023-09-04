@@ -2,6 +2,8 @@ import { React, useContext, useState } from "react";
 import '../App.css';
 import { Link } from "react-router-dom";
 import { AppContext } from "../addOns/AppProvider";
+//css header not sticky
+//pointer
 function HeaderRouter() {
     const { localStorageNum, setCurrent } = useContext(AppContext);
     const [num, setNum] = useState(localStorageNum)

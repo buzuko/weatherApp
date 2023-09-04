@@ -12,6 +12,8 @@ function LogIn() {
 
 
     const usernameRegex = /^(?=.*[a-z])(?=.*[A-Z])(?!.*\d{4,})(?=^(?:\D*\d){0,3}\D*$)[a-zA-Z\d]*$/;
+    //utils
+    //bug after logout
     const { data, setData } = useContext(AppContext);
 
     // וולידצית משתמש
@@ -19,6 +21,7 @@ function LogIn() {
         e.preventDefault();
         if (usernameRegex.test(userName)) {
             fetchData(password, userName)
+            //await
         } else {
             setIsPending(false)
             alert("password is incorrect!");

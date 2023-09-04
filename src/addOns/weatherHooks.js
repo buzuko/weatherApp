@@ -37,6 +37,8 @@ export function useAllCities(URL, bool) {
                         async function fetchData() {
                             try {
                                 const res2 = await axios(`https://api.openweathermap.org/data/2.5/onecall?lat=${res.data.latitude}&lon=${res.data.longitude}&appid=6f11fa9760902e1597265ad205f05d2c`);
+                                //------env
+                                // fetch and res2
                                 setWeatherData(res2.data)
                                 varifySearched2(res2.data)
                                 varifySearched(URL, true)

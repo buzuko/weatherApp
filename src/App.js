@@ -16,6 +16,9 @@ function App() {
         <Router >
           <HeaderRouter />
           <Switch >
+          <Route exact path="/">
+              <LogIn />
+            </Route>
             <Route exact path="/LogIn">
               <LogIn />
             </Route>

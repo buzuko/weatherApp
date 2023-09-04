@@ -25,7 +25,7 @@ function Header(info) {
     }
     return (
         <header className="Header">
-            <h1>{"שלום " + localStorage.getItem("fullName")}</h1>
+            <h1 style={{diretion: 'rtl'}}>{`שלום ${localStorage.getItem("fullName")}`}</h1>
             {
                 !isPending ?
                     <>

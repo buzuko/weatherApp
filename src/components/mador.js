@@ -7,6 +7,7 @@ import Popup from 'reactjs-popup'
 
 
 
+
 function Mador() {
     const { error, soldiersData, setSoldiersData, setIsChanged, setSelected, isSaved, isPending, setIsPending, setNewSoldiersData, newSoldiersData } = useContext(AppContext);
     const [isClick, setIsClick] = useState(false)
@@ -45,6 +46,8 @@ function Mador() {
         setShowPopup(false)
         console.log(soldiersData)
         console.log(newSoldiersData)
+        //!!!!אסור
+        
     }
 
     return (

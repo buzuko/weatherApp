@@ -5,6 +5,7 @@ import MadorSoldiers from "./madorSoldiers";
 
 
 function MadorPage({ changeClicked, changeIsClosed }) {
+    //עיצובים מדוייקים כי אחרת זה נחשב באגים
 
     return (
         <div className="MadorPage">
